@@ -9,7 +9,7 @@ from django.conf import settings
 from sentiment.twitter import get_tweets
 from sentiment.models import Sentiment
 
-from transformers import AutoModelForSequenceClassification, Trainer
+from transformers import AutoModelForSequenceClassification, Trainer, TrainingArguments
 from transformers import AutoTokenizer
 
 from wordcloud import WordCloud
@@ -22,7 +22,9 @@ import logging
 import json
 import re
 import os
+import logging
 
+logging.disable(logging.INFO)
 plt.switch_backend('Agg') 
 
 db_logger = logging.getLogger('db')
@@ -30,7 +32,7 @@ file_exists = exists(f'{os.path.join(os.path.dirname(__file__))}/IndoBERT/pytorc
 
 classifier = AutoModelForSequenceClassification.from_pretrained('ShinyQ/Sentiboard')
 tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p2")
-model = Trainer(model=classifier)
+model = Trainer(model=classifier, args=TrainingArguments(disable_tqdm=True, output_dir='tmp'))
 
 def preprocessing(text):
     # Inisialisasi Dataset Stopword 
