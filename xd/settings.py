@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-gln+m%&0f41$uq0tvu9&gq2dx(ds^=1qd#6vg5#^fh*d+#rt&5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://103.139.193.215/', 'https://sentiboard.web.id']
 
 # LOGGING = {
 #     'version': 1,
