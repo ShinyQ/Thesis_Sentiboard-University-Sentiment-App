@@ -1,0 +1,144 @@
+/* AUTH */
+.air__auth {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+            background-size: cover;
+    background-position: center;
+    background-color: #f2f4f8;
+}
+
+.air__auth__container {
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    max-width: 36rem;
+    width: 100%;
+    -webkit-box-shadow: 0 4px 38px 0 rgba(22, 21, 55, 0.06), 0 0 21px 0 rgba(22, 21, 55, 0.03);
+            box-shadow: 0 4px 38px 0 rgba(22, 21, 55, 0.06), 0 0 21px 0 rgba(22, 21, 55, 0.03);
+}
+
+.air__auth__googleSign {
+    background-image: url("../core/img/icons/google-logo.svg");
+    background-repeat: no-repeat;
+    -webkit-background-size: 1.4rem 1.4rem;
+            background-size: 1.4rem 1.4rem;
+    background-position: center left 1rem;
+    padding-left: 2.66rem;
+}
+
+.air__auth__footerNav li {
+    margin: 0.33rem 0.93rem;
+}
+
+.air__auth--white .air__auth {
+    background: #fff;
+}
+
+.air__auth--blue .air__auth {
+    background: #1b55e3;
+}
+
+.air__auth--blue .air__auth .air__network__container,
+.air__auth--blue .air__auth .air__utils__logo__name,
+.air__auth--blue .air__auth .air__utils__logo__descr {
+    color: #fff !important;
+}
+
+.air__auth--blue .air__auth .air__auth__container + div {
+    color: #f2f4f8;
+}
+
+.air__auth--blue .air__auth .air__auth__container + div a {
+    color: #fff !important;
+}
+
+.air__auth--blue .air__auth .air__auth__footerNav a {
+    color: #fff !important;
+}
+
+.air__auth--black .air__auth {
+    background: #161537;
+}
+
+.air__auth--black .air__auth .air__network__container,
+.air__auth--black .air__auth .air__utils__logo__name,
+.air__auth--black .air__auth .air__utils__logo__descr {
+    color: #fff !important;
+}
+
+.air__auth--black .air__auth .air__auth__container + div {
+    color: #f2f4f8;
+}
+
+.air__auth--black .air__auth .air__auth__container + div a {
+    color: #fff !important;
+}
+
+.air__auth--black .air__auth .air__auth__footerNav a {
+    color: #fff !important;
+}
+
+.air__auth--img .air__auth {
+    background-image: url("../core/img/content/jacket.jpg");
+    background-repeat: repeat;
+    background-position: center center;
+}
+
+/* NETWORK */
+.air__network {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+            background-size: cover;
+    background-position: center;
+}
+
+.air__network__container {
+    max-width: 33.66rem;
+    width: 100%;
+}
+
+/* PRICING TABLES */
+.air__pricingTable__items--separated {
+    overflow: hidden;
+}
+
+.air__pricingTable__items--separated .air__pricingTable__item {
+    margin-right: -1px;
+    border-right: 1px solid #e4e9f0;
+    -webkit-border-radius: 0;
+            border-radius: 0;
+}
+
+.air__pricingTable__item {
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+}

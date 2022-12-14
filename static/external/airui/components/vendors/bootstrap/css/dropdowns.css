@@ -1,0 +1,111 @@
+/* DROPDOWNS */
+.dropdown .dropdown-toggle::after,
+.btn-group .dropdown-toggle::after {
+    opacity: 0.6;
+    -webkit-transform: translateY(40%);
+        -ms-transform: translateY(40%);
+            transform: translateY(40%);
+}
+
+.dropdown .dropdown-toggle-noarrow:after,
+.btn-group .dropdown-toggle-noarrow:after {
+    display: none;
+}
+
+.dropdown .dropdown-toggle-icon,
+.btn-group .dropdown-toggle-icon {
+    position: relative;
+    bottom: -0.14rem;
+    margin-right: 0.33rem;
+    color: #c3bedc;
+}
+
+.dropdown .dropdown-menu-scroll-container,
+.btn-group .dropdown-menu-scroll-container {
+    position: relative;
+}
+
+.dropdown .dropdown-menu,
+.btn-group .dropdown-menu {
+    border: none;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 4px 38px 0 rgba(22, 21, 55, 0.11), 0 0 21px 0 rgba(22, 21, 55, 0.05);
+            box-shadow: 0 4px 38px 0 rgba(22, 21, 55, 0.11), 0 0 21px 0 rgba(22, 21, 55, 0.05);
+}
+
+.dropdown .dropdown-menu .dropdown-icon,
+.btn-group .dropdown-menu .dropdown-icon {
+    margin-right: 0.33rem;
+}
+
+.dropdown .dropdown-menu .dropdown-divider,
+.btn-group .dropdown-menu .dropdown-divider {
+    background-color: #e4e9f0;
+}
+
+.dropdown .dropdown-menu .dropdown-header,
+.btn-group .dropdown-menu .dropdown-header {
+    padding: 0.46rem 1rem;
+    color: #786fa4;
+    font-size: 0.93rem;
+    font-weight: 600;
+}
+
+.dropdown .dropdown-menu .dropdown-item,
+.btn-group .dropdown-menu .dropdown-item {
+    color: #786fa4;
+    background: none;
+    padding: 0.2rem 1rem;
+    -webkit-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
+.dropdown .dropdown-menu .dropdown-item a,
+.btn-group .dropdown-menu .dropdown-item a {
+    color: #786fa4;
+}
+
+.dropdown .dropdown-menu .dropdown-item a:hover, .dropdown .dropdown-menu .dropdown-item a:active,
+.btn-group .dropdown-menu .dropdown-item a:hover,
+.btn-group .dropdown-menu .dropdown-item a:active {
+    background: none;
+    color: #1b55e3;
+}
+
+.dropdown .dropdown-menu .dropdown-item.disabled,
+.btn-group .dropdown-menu .dropdown-item.disabled {
+    cursor: not-allowed;
+    color: #e4e9f0 !important;
+}
+
+.dropdown .dropdown-menu .dropdown-item.disabled a,
+.btn-group .dropdown-menu .dropdown-item.disabled a {
+    color: #e4e9f0 !important;
+    cursor: not-allowed;
+}
+
+.dropdown .dropdown-menu .dropdown-item.active,
+.btn-group .dropdown-menu .dropdown-item.active {
+    background: #dde2ec !important;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover, .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:focus,
+.btn-group .dropdown-menu .dropdown-item:hover,
+.btn-group .dropdown-menu .dropdown-item:active,
+.btn-group .dropdown-menu .dropdown-item:focus {
+    background: none;
+    color: #1b55e3;
+}
+
+.dropdown.show .dropdown-toggle::before,
+.btn-group.show .dropdown-toggle::before {
+    display: block;
+}
+
+.dropdown.show .dropdown-toggle-text,
+.btn-group.show .dropdown-toggle-text {
+    color: #1b55e3;
+}

@@ -1,0 +1,24 @@
+/* TYPOGRAPHY */
+.mark,
+mark {
+    background: #f2a654;
+    color: #fff;
+}
+
+.blockquote {
+    background: #f2f4f8;
+    padding: 30px;
+    border-left: 3px solid #e4e9f0;
+    font-size: 1rem;
+}
+
+.blockquote-reverse {
+    text-align: right;
+    border-left: none;
+    border-right: 3px solid #e4e9f0;
+}
+
+.blockquote-footer {
+    margin-top: 1.33rem;
+    color: #aca6cc;
+}

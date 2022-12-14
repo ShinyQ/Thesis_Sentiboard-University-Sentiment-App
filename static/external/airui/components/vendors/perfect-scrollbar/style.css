@@ -1,0 +1,22 @@
+/*  PERFECT CUSTOM STYLES */
+.ps--theme_airui.ps > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+    width: 5px !important;
+}
+
+.ps--theme_airui.ps:hover > .ps__scrollbar-y-rail:hover,
+.ps--theme_airui.ps:hover > .ps__scrollbar-x-rail:hover {
+    background: none;
+    opacity: 0.7;
+}
+
+.ps--theme_airui.ps > .ps__scrollbar-y-rail > .ps__scrollbar-x,
+.ps--theme_airui.ps > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+    background-color: #c3bedc !important;
+    opacity: 0.5;
+}
+
+.ps--theme_airui.ps.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail,
+.ps--theme_airui.ps.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail {
+    background-color: transparent;
+    opacity: 0.9;
+}

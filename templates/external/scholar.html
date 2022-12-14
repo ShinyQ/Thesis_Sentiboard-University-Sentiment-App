@@ -1,0 +1,61 @@
+{% extends "includes/dashboard-base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="air__layout__content">
+  <div class="air__utils__content">
+    <div class="air__utils__heading">
+      <h5>Dashboard Google Scholar</h5>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-4">
+          <strong>Tabel Data Google Scholar</strong>
+        </h4>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mb-5">
+              <table class="table table-hover nowrap" id="example1">
+                <thead>
+                  <tr>
+                    <th>Tittle</th>
+                    <th>Author</th>
+                    <th>Year</th>
+                    <th>URL</th>
+                    <th>Description</th>
+                    <th>Number of Cited</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for li in data %}
+                  <tr>
+                    <td>{{ li.tittle }}</td>
+                    <td>{{ li.author }}</td>
+                    <td>{{ li.year }}</td>
+                    <td>{{ li.url }}</td>
+                    <td>{{ li.desc }}</td>
+                    <td>{{ li.num_cited }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+
+  $(function () {
+    $("#example1").DataTable({
+      responsive: true,
+      // autoWidth: true,
+      // scrollX: true,
+      // fixedColumns: true,
+    });
+  })
+</script>
+{% endblock content %}

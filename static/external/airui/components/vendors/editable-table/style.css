@@ -1,0 +1,19 @@
+/*  EDITABLE TABLE */
+.editable-table td {
+    outline: none !important;
+}
+
+.editable-table + input,
+.editable-table input:focus {
+    border: 1px solid #1b55e3 !important;
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+}
+
+.editable-table.table-inverse + input,
+.editable-table.table-inverse input:focus {
+    border-color: #786fa4 !important;
+    border-bottom: none !important;
+}

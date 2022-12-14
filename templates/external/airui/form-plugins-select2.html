@@ -1,0 +1,135 @@
+{% extends "includes/dashboard-base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="air__layout__content">
+    <div class="air__utils__content">
+      <div class="air__utils__heading">
+        <h4>
+          <span class="mr-3">Select2</span>
+          <a href="https://select2.github.io/" target="_blank" class="btn btn-sm btn-light">
+            Official Documentation
+            <i class="fe fe-corner-right-up"></i>
+          </a>
+        </h4>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-5">
+                    <h4 class="mb-4"><strong>Single Item</strong></h4>
+                    <div class="form-group">
+                      <label>Enabled</label>
+                      <select class="select2">
+                        <option>Option 1</option>
+                        <option disabled>Option 2 (disabled)</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Disabled</label>
+                      <select class="select2" disabled>
+                        <option>Option 1</option>
+                        <option disabled>Option 2 (disabled)</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Grouped</label>
+                      <select class="select2">
+                        <optgroup label="Group 1">
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                        </optgroup>
+                        <optgroup label="Group 2">
+                          <option>Option 3</option>
+                          <option>Option 4</option>
+                          <option>Option 5</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-5">
+                    <h4 class="mb-4"><strong>Multiple Items</strong></h4>
+                    <div class="form-group">
+                      <label>Enabled</label>
+                      <select class="select2" multiple>
+                        <option selected>Option 1</option>
+                        <option>Option 2</option>
+                        <option selected>Option 3</option>
+                        <option>Option 4</option>
+                        <option selected>Option 5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Disabled</label>
+                      <select class="select2" multiple disabled>
+                        <option selected>Option 1</option>
+                        <option>Option 2</option>
+                        <option selected>Option 3</option>
+                        <option>Option 4</option>
+                        <option selected>Option 5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Grouped</label>
+                      <select class="select2" multiple>
+                        <optgroup label="Group 1">
+                          <option selected>Option 1</option>
+                          <option>Option 2</option>
+                        </optgroup>
+                        <optgroup label="Group 2">
+                          <option selected>Option 3</option>
+                          <option>Option 4</option>
+                          <option>Option 5</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-5">
+                    <h4 class="mb-4"><strong>Dynamic Tags</strong></h4>
+                    <div class="form-group">
+                      <select class="select2-tags" multiple>
+                        <option selected>Type tag and press Enter</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <script>
+        (function ($) {
+          "use strict";
+          $(function () {
+            $(".select2").select2();
+            $(".select2-tags").select2({
+              tags: true,
+              tokenSeparators: [",", " "],
+            });
+          });
+        })(jQuery);
+      </script>
+    </div>
+  </div>  
+{% endblock content %}

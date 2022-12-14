@@ -1,0 +1,295 @@
+{% extends "includes/dashboard-base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  .air__utils__content {
+    padding: 2rem!important;
+    max-width: 90rem!important;
+  } 
+
+  .table tbody tr td {
+    font-size: 16px!important;
+    text-align: justify;
+  }
+
+  .swal2-styled.swal2-confirm{
+    background-color: #1b55e3;
+    border-color: #1b55e3;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<div class="air__layout__content">
+  <div class="air__utils__content">
+    <div class="air__utils__heading">
+      <h3>Halaman Crawling Data</h3>
+    </div>
+        <h4 class="mb-0">Crawling Dan Simpan Dataset</h4>
+        <hr>
+
+        <div class="input-group mb-3">
+          <input id='search-query' type="text" class="col-4 form-control mr-3" placeholder="Masukkan Kata Kunci Pencarian (Optional)">
+          <button onclick="get_tweets()" class="btn btn-outline-primary"><i class="fa fa-search" aria-hidden="true"></i> &nbsp; Cari Data</button>
+        </div>
+
+        <div class="input-group mb-3">
+          <div id='save-button'></div>
+        </div>
+        
+        <div id='img-crawl' class="mt-5">
+          <img class="center" src="{% static '/sentiment/search.png' %}" width="260px">
+          <h6 class="text-center" style="font-weight:600">Tekan Tombol Cari Data Untuk Memulai Crawling</h6>
+        </div>
+        
+        <div id="table-tweets" class="table-responsive"></div>
+  </div>
+</div>
+
+<script type="text/javascript"> 
+    if (localStorage.length > null) {
+      $('#img-crawl').hide()
+      
+      set_save_table()
+      set_table()
+
+      var counter = 0
+
+      const items = { ...localStorage };
+      const itemsKey = Object.keys(items)
+      const itemsValue = Object.values(items)
+      
+      for (let i = 0; i < itemsKey.length; i++) {
+        if(itemsKey[i] != 'tweets'){
+          set_table_row(JSON.parse(itemsValue[i]), counter, itemsKey[i])
+          counter++
+        }
+      }
+    }
+
+    $("#manage_table").DataTable({
+        responsive: true,
+    });
+
+    function set_save_table(){
+      document.getElementById("save-button").innerHTML += 
+        "<button id='save-tweet' onclick='save()' class='btn btn-primary'>" +
+            "Simpan Dataset" +
+        "</button>"
+
+      document.getElementById("save-button").innerHTML += 
+        "<button onclick='reset_tweets()' class='ml-2 btn btn-outline-warning'>" +
+          "Reset" + 
+        "</button>"
+    }
+
+    function set_table(){
+      document.getElementById("table-tweets").innerHTML +=
+          "<table class='table table-hover' id='manage_table'>" +
+            "<thead class='thead-dark'>" +
+              "<tr>" +
+                "<th>No</th>" +
+                "<th>Teks</th>" +
+                "<th>Teks Preprocessing</th>" +
+                "<th>Sentimen</th>" +
+                "<th>Tanggal</th>" +
+                "<th>Aksi</th>" +
+             "</tr>" +
+            "</thead>" +
+            "<tbody id='data-sentiment'></tbody>" +
+          "</table>"
+    }
+
+    function set_table_row(data, i, index){
+      const no = i+1
+      const label = data.sentiment
+
+      var sentiment = "Netral"
+
+      if (label == 1){
+        sentiment = "Positif"
+      } else if (label == 2){
+        sentiment = "Negatif"
+      }
+
+      document.getElementById("data-sentiment").innerHTML += 
+          "<tr id='tweet-"+ index +"'>" +
+            "<td>"+ no +".</td>" +
+            "<td width='30%'>"+
+              data.text
+            +"</td>"+
+            "<td width='30%'>"+
+              data.preprocessing
+            +"</td>"+
+            "<td>"+
+              "<center>"+ sentiment +"</center> "
+            +"</td>"+
+            "<td>"+
+              data.created_at
+            +"</td>"+
+            "<td>"+
+              "<button onclick='hapus("+ index +")' class='btn btn-danger'><i class='fa fa-trash' aria-hidden='true'></i> &nbsp; Hapus</button>"
+            +"</td>"+
+          "</tr>"
+    }
+
+    function reset_tweets(){
+        localStorage.clear()
+
+        Swal.fire({
+          title: 'Sukses Mereset Data Crawl',
+          showConfirmButton: false,
+          icon: 'success'
+        }),
+
+        setTimeout(function(){
+          window.location.reload();
+        }, 2500)
+    }
+
+    function get_tweets(){
+        localStorage.clear()
+
+        let elem = document.getElementById('save-tweet')
+        let elemTable = document.getElementById('manage_table')
+        let query = document.getElementById('search-query').value
+
+        if(elem && elemTable){
+           elem.parentNode.removeChild(elem)
+           elemTable.parentNode.removeChild(elemTable)
+           $("#manage_table").DataTable().destroy()
+        }
+
+        Swal.fire({
+          title: 'Proses Crawling Data',
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          imageUrl: "https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif",
+          imageHeight: 80, 
+          imageWidth: 80,       
+          onOpen: () => {
+            Swal.showLoading();
+          },
+          didOpen: () => {
+            $.ajax({
+            url: "/sentiment/crawl_tweets",
+            type: 'POST',
+            dataType: 'json',
+            data: JSON.stringify({'query': query}),
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
+            },
+            success: function (response) {
+                if (response.data.length == 0){
+                  Swal.fire({
+                      title: 'Tidak Dapat Menemukan Data',
+                      text: 'Silahkan menambahkan kata kunci lainnya pada pencarian',
+                      showConfirmButton: false,
+                      icon: 'warning'
+                    })
+                } else {
+                    for (let i = 0; i < response.data.length; i++) {
+                      let data = response.data[i]
+                      localStorage.setItem(i, JSON.stringify(data))
+                    }   
+
+                    Swal.fire({
+                      title: 'Sukses Melakukan Crawl Data',
+                      text: 'Silahkan mengedit data sebelum disimpan',
+                      showConfirmButton: false,
+                      icon: 'success'
+                    })
+
+                    setTimeout(function(){
+                      window.location.reload();
+                    }, 2500)
+                }
+            },
+            error: function (response) {
+                console.log(response)
+            }
+        })
+          }
+        })
+    }
+
+    function hapus(id){
+      Swal.fire({
+        title: 'Apakah anda yakin ingin menghapus data tersebut?',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, hapus'
+      }).then((result) => {
+        if(result.isConfirmed){ 
+          localStorage.removeItem(id)
+          console.log('Sukses')
+          Swal.fire({
+            title: 'Sukses Menghapus Data',
+            showConfirmButton: false,
+            icon: 'success',
+            timer: 2000
+          })
+
+          setTimeout(function(){
+            window.location.reload();
+          }, 2000)
+        }
+      })
+    } 
+
+    function save(){
+      const items = { ...localStorage }
+      const itemsKey = Object.keys(items)
+      const itemsValue = Object.values(items)
+      const itemsJson = itemsKey.reduce((obj, key, index) => ({ ...obj, [key]: itemsValue[index] }), {})
+
+      Swal.fire({
+        title: 'Apakah anda yakin ingin menyimpan dataset tersebut?',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, simpan',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if(result.isConfirmed){
+          $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "/sentiment/crawl_save",
+            data: JSON.stringify({'tweets': itemsJson}),
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
+            },
+            complete: function (response) {
+                if (response.status == 200){
+                  localStorage.clear()
+                  
+                  Swal.fire({
+                      title: 'Sukses Menyimpan Data',
+                      showConfirmButton: false,
+                      icon: 'success',
+                      text: 'Mengalihkan menuju halaman kelola sentimen.',
+                      timer: 2500
+                  })
+
+                  setTimeout(function(){
+                    window.location.href = "{% url 'sentiment:manage' %}"
+                  }, 2000)
+                } else {
+                  Swal.fire({
+                      title: 'Gagal Menyimpan Data',
+                      showConfirmButton: false,
+                      icon: 'failed',
+                      timer: 2500
+                  })
+                }
+            }
+          })
+        }
+      })
+    }
+  </script>
+{% endblock content %}

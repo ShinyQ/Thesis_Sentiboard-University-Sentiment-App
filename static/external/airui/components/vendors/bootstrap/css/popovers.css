@@ -1,0 +1,37 @@
+/* POPOVERS */
+.popover {
+    border-color: #e4e9f0;
+}
+
+.popover .popover-inner {
+    border-width: 0.53rem;
+}
+
+.popover .popover-inner:after {
+    border-width: 0.46rem;
+}
+
+.popover.left:before, .popover.bs-tether-element-attached-left:before {
+    border-right-color: #e4e9f0;
+}
+
+.popover.right:before, .popover.bs-tether-element-attached-right:before {
+    border-left-color: #e4e9f0;
+}
+
+.popover.top:before, .popover.bs-tether-element-attached-top:before {
+    border-bottom-color: #e4e9f0;
+}
+
+.popover.bottom:before, .popover.bs-tether-element-attached-bottom:before {
+    border-top-color: #e4e9f0;
+}
+
+.popover .popover-title {
+    font-weight: 600;
+    background: #f2f4f8;
+    margin: -1px;
+    padding: 0.53rem 1rem;
+    -webkit-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+}

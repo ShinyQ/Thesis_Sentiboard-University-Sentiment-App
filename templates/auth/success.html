@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'external/airui/head.html' %}
+</head>
+<body>
+  <div class="air__initialLoading"></div>
+  <div class="air__auth">
+  <div class="pt-5 pb-5 d-flex align-items-end mt-auto">
+    <div class="air__utils__logo__text text-center">
+      <div class="air__utils__logo__name text-uppercase text-dark font-size-21">TEL-U</div>
+      <div class="air__utils__logo__descr text-uppercase font-size-12 text-gray-6">
+        Dashboard
+      </div>
+    </div>
+  </div>
+  <div class="air__auth__container pl-5 pr-5 pt-5 pb-5 bg-white text-center">
+    <div class="text-dark font-size-30 mb-4">Registration Completed</div>
+    <div class="text-center font-size-18 mb-auto">
+      You can login now 
+      <a href="{% url 'auth:login' %}" class="font-weight-bold text-blue text-underlined"><u>here</u></a>
+    </div>
+  </div>
+  <div class="mt-auto pb-5 pt-5">
+    <div class="text-gray-4 text-center">© 2021 Tel-U Dashboard. All rights reserved.</div>
+  </div>
+</div>
+</body>
+</html>

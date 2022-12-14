@@ -1,0 +1,360 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'external/airui/head.html' %}
+</head>
+<body>
+  <div class="air__initialLoading"></div>
+  <div class="air__sidebar">
+    <a
+      href="javascript: void(0);"
+      class="air__sidebar__close air__sidebar__actionToggle fe fe-x-circle"
+    ></a>
+    <h5>
+      <strong>Theme Settings</strong>
+    </h5>
+    <div class="air__utils__line mb-4" style="margin-top: 19px;"></div>
+    <div class="air__sidebar__scroll">
+      <p class="text-muted">
+        This component gives possibility to construct custom blocks with any widgets, components and
+        elements inside, like this theme settings
+      </p>
+      <div class="air__sidebar__type">
+        <div class="air__sidebar__type__title">
+          <span>Menu Type</span>
+        </div>
+        <div class="air__sidebar__type__items">
+          <div class="row">
+            <div class="col-6">
+              <label class="air__utils__control air__utils__control__radio">
+                <input type="radio" name="menuType" checked to="body" setting="" />
+                <span class="air__utils__control__indicator"></span>
+                Default
+              </label>
+              <label class="air__utils__control air__utils__control__radio hideIfMenuTop">
+                <input type="radio" name="menuType" to="body" setting="air__menu--flyout" />
+                <span class="air__utils__control__indicator"></span>
+                Flyout
+              </label>
+            </div>
+            <div class="col-6">
+              <label class="air__utils__control air__utils__control__radio hideIfMenuTop">
+                <input type="radio" name="menuType" to="body" setting="air__menu--compact" />
+                <span class="air__utils__control__indicator"></span>
+                Compact
+              </label>
+              <label class="air__utils__control air__utils__control__radio">
+                <input type="radio" name="menuType" to="body" setting="air__menu--nomenu" />
+                <span class=" air__utils__control__indicator"></span>
+                No Menu
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="air__sidebar__item hideIfMenuTop">
+        <div class="air__sidebar__label">
+          Toggled left menu
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__menu--toggled" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item hideIfMenuTop">
+        <div class="air__sidebar__label">
+          Unfixed left menu
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__menu--unfixed" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Fixed topbar
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__layout--fixedHeader" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Menu color
+        </div>
+        <div class="air__sidebar__container">
+          <div class="air__sidebar__select" to="body">
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--white"
+              setting="air__menu--white"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--gray"
+              setting="air__menu--gray"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--blue"
+              setting="air__menu--blue"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--black air__sidebar__select__item--active"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Flyout menu
+        </div>
+        <div class="air__sidebar__container">
+          <div class="air__sidebar__select" to="body">
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--white"
+              setting="air__menu__submenu--white"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--gray"
+              setting="air__menu__submenu--gray"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--blue air__sidebar__select__item--active"
+              setting="air__menu__submenu--blue"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--black"
+              setting="air__menu__submenu--black"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Login color
+        </div>
+        <div class="air__sidebar__container">
+          <div class="air__sidebar__select" to="body">
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--white"
+              setting="air__auth--white"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--gray air__sidebar__select__item--active"
+              setting=""
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--blue"
+              setting="air__auth--blue"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--black"
+              setting="air__auth--black"
+            ></div>
+            <div
+              class="air__sidebar__select__item air__sidebar__select__item--img"
+              setting="air__auth--img"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Content no max-width
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__layout--contentNoMaxWidth" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          App max-width
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__layout--appMaxWidth" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Gray background
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__layout--grayBackground" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Gray topbar
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__layout--grayTopbar" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Squared card borders
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__layout--squaredBorders" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Card shadow
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__layout--cardsShadow" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Borderless cards
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__layout--borderless" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="air__sidebar__item">
+        <div class="air__sidebar__label">
+          Menu shadow
+        </div>
+        <div class="air__sidebar__container">
+          <label class="air__sidebar__switch">
+            <input type="checkbox" to="body" setting="air__menu--shadow" />
+            <span class="air__sidebar__switch__slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    class="air__sidebar__toggleButton air__sidebar__actionToggle btn btn-rounded btn-light text-nowrap text-dark font-weight-bold font-size-18"
+  >
+    <i class="fe fe-settings text-blue mr-md-2"></i>
+    <span class="d-none d-md-inline">Settings</span>
+  </button>
+  <div class="air__chat">
+    <button
+      class="air__chat__toggleButton air__chat__actionToggle btn btn-rounded btn-light text-nowrap text-dark font-weight-bold font-size-18"
+    >
+      <i class="fe fe-message-square text-blue mr-md -2"></i>
+      <span class="d-none d-md-inline">Support Chat</span>
+    </button>
+    <div class="air__chat__container">
+      <div class="d-flex flex-wrap mb-2">
+        <div class="text-dark font-size-18 font-weight-bold mr-auto">Support Chat</div>
+        <button class="air__g14__closeBtn btn btn-link air__chat__actionToggle">
+          <i class="fe fe-x-square font-size-21 align-middle text-gray-6"></i>
+        </button>
+      </div>
+      <div class="air__chat__innerContainer d-flex flex-column justify-content-end">
+        <div class="air__g14__contentWrapper air__customScroll">
+          <div class="air__g14__message">
+            <div class="air__g14__messageContent">
+              <div class="text-gray-4 font-size-12 text-uppercase">You, 5 min ago</div>
+              <div>
+                Hi! Anyone here? I want to know how I can buy Air UI?
+              </div>
+            </div>
+            <div class="air__g14__messageAvatar air__utils__avatar">
+              <img src="{% static 'external/airui/components/core/img/avatars/avatar-2.png' %}" alt="You" />
+            </div>
+          </div>
+          <div class="air__g14__message air__g14__message--answer">
+            <div class="air__g14__messageContent">
+              <div class="text-gray-4 font-size-12 text-uppercase">Mary, 14 sec ago</div>
+              <div>
+                Please call us + 100 295 000
+              </div>
+            </div>
+            <div class="air__g14__messageAvatar air__utils__avatar">
+              <img src="{% static 'external/airui/components/core/img/avatars/2.jpg' %}" alt="Mary Stanform" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-2 pb-2">
+        Mary is typing...
+      </div>
+      <div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Send message..."
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+              <i class="fe fe-send align-middle"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="air__auth">
+  <div class="pt-4 pb-4 d-flex align-items-end mt-auto">
+    <img src="{% static 'external/airui/components/core/img/air-logo.png' %}" alt="AIR UI Logo" />
+    <div class="air__utils__logo__text">
+      <div class="air__utils__logo__name text-uppercase text-dark font-size-21">AIR UI</div>
+      <div class="air__utils__logo__descr text-uppercase font-size-12 text-gray-6">
+        Admin template
+      </div>
+    </div>
+  </div>
+  <div class="air__network__container pl-5 pr-5 pt-5 pb-5 mb-auto text-dark font-size-30">
+    <div class="font-weight-bold mb-3">Page not found</div>
+    <div>This page is deprecated, deleted, or does not exist at all</div>
+    <div class="font-weight-bold font-size-70 mb-1">404 —</div>
+    <a href="javascript: void(0);" class="btn btn-outline-primary width-100">Go Back</a>
+  </div>
+  <div class="mt-auto pb-5 pt-5">
+    <ul class="air__auth__footerNav list-unstyled d-flex mb-2 flex-wrap justify-content-center">
+      <li>
+        <a href="#">Terms of Use</a>
+      </li>
+      <li>
+        <a href="#">Compliance</a>
+      </li>
+      <li>
+        <a href="#">Support</a>
+      </li>
+      <li>
+        <a href="#">Contacts</a>
+      </li>
+    </ul>
+    <div class="text-gray-4 text-center">© 2019 Mediatec. All rights reserved.</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      Executive Dashboard
+    </title>
+  
+    <!-- VENDORS -->
+    <!-- v1.0.0 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/font-feathericons/dist/feather.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/font-linearicons/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/font-icomoon/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/perfect-scrollbar/css/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/chart.js/dist/Chart.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/jqvmap/dist/jqvmap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/c3/c3.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/v/bs4/dt-1.10.18/fc-3.2.5/r-2.2.2/datatables.min.css" />
+    <link rel="stylesheet" type="text/css"
+      href="{% static 'external/airui/vendors/tempus-dominus-bs4/build/css/tempusdominus-bootstrap-4.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/fullcalendar/dist/fullcalendar.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/owl.carousel/dist/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/ionrangeslider/css/ion.rangeSlider.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/bootstrap-sweetalert/dist/sweetalert.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/nprogress/nprogress.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/summernote/dist/summernote.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/dropify/dist/css/dropify.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/jquery-steps/demo/css/jquery.steps.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/select2/dist/css/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/vendors/bootstrap-select/dist/css/bootstrap-select.min.css' %}">
+  
+  
+    <script src="{% static 'external/airui/vendors/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/popper.js/dist/umd/popper.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/jquery-mousewheel/jquery.mousewheel.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/perfect-scrollbar/js/perfect-scrollbar.jquery.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/chartist/dist/chartist.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/chart.js/dist/Chart.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/jqvmap/dist/jquery.vmap.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/jqvmap/dist/maps/jquery.vmap.usa.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/d3/d3.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/d3-dsv/dist/d3-dsv.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/d3-time-format/dist/d3-time-format.js' %}"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="{% static 'external/airui/vendors/c3/c3.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/peity/jquery.peity.min.js' %}"></script>
+    <script type="text/javascript"
+      src="https://cdn.datatables.net/v/bs4/dt-1.10.18/fc-3.2.5/r-2.2.2/datatables.min.js"></script>
+    <script src="{% static 'external/airui/vendors/editable-table/mindmup-editabletable.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/moment/min/moment.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/tempus-dominus-bs4/build/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/fullcalendar/dist/fullcalendar.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/ionrangeslider/js/ion.rangeSlider.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/bootstrap-sweetalert/dist/sweetalert.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/nprogress/nprogress.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/summernote/dist/summernote.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/nestable/jquery.nestable.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/jquery-typeahead/dist/jquery.typeahead.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/autosize/dist/autosize.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/bootstrap-show-password/dist/bootstrap-show-password.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/dropify/dist/js/dropify.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/html5-form-validation/dist/jquery.validation.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/jquery-steps/build/jquery.steps.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/jquery-mask-plugin/dist/jquery.mask.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/select2/dist/js/select2.full.min.js' %}"></script>
+    <script src="{% static 'external/airui/vendors/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+  
+    <!-- AIR UI HTML ADMIN TEMPLATE MODULES-->
+    <!-- v1.0.0 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/vendors/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/core/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/widgets/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/system/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/menu-left/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/menu-top/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/footer/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/topbar/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/subbar/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/sidebar/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/chat/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/apps/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/apps/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/extra-apps/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'external/airui/components/ecommerce/style.css' %}">
+  
+    <script src="{% static 'external/airui/components/core/index.js' %}"></script>
+    <script src="{% static 'external/airui/components/menu-left/index.js' %}"></script>
+    <script src="{% static 'external/airui/components/menu-top/index.js' %}"></script>
+    <script src="{% static 'external/airui/components/sidebar/index.js' %}"></script>
+    <script src="{% static 'external/airui/components/topbar/index.js' %}"></script>
+    <script src="{% static 'external/airui/components/chat/index.js' %}"></script>
+  
+    <!-- PRELOADER STYLES-->
+    <style>
+      .air__initialLoading {
+        position: fixed;
+        z-index: 99999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDFweCIgIGhlaWdodD0iNDFweCIgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0ibGRzLXJvbGxpbmciPiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiBmaWxsPSJub25lIiBuZy1hdHRyLXN0cm9rZT0ie3tjb25maWcuY29sb3J9fSIgbmctYXR0ci1zdHJva2Utd2lkdGg9Int7Y29uZmlnLndpZHRofX0iIG5nLWF0dHItcj0ie3tjb25maWcucmFkaXVzfX0iIG5nLWF0dHItc3Ryb2tlLWRhc2hhcnJheT0ie3tjb25maWcuZGFzaGFycmF5fX0iIHN0cm9rZT0iIzAxOTBmZSIgc3Ryb2tlLXdpZHRoPSIxMCIgcj0iMzUiIHN0cm9rZS1kYXNoYXJyYXk9IjE2NC45MzM2MTQzMTM0NjQxNSA1Ni45Nzc4NzE0Mzc4MjEzOCIgdHJhbnNmb3JtPSJyb3RhdGUoODQgNTAgNTApIj4gICAgICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgY2FsY01vZGU9ImxpbmVhciIgdmFsdWVzPSIwIDUwIDUwOzM2MCA1MCA1MCIga2V5VGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49IjBzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlVHJhbnNmb3JtPiAgICA8L2NpcmNsZT4gIDwvc3ZnPg==);
+        background-color: #fff;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('.air__initialLoading').delay(200).fadeOut(400)
+      })
+    </script>
+  </head>
+  

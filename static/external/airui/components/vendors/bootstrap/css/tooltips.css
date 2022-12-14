@@ -1,0 +1,27 @@
+/* TOOLTIPS */
+.tooltip .tooltip-inner {
+    background: #161537;
+    padding: 0.26rem 1rem;
+    color: #fff;
+    font-size: 0.93rem;
+}
+
+.tooltip.left .tooltip-inner:before, .tooltip.bs-tooltip-auto[x-placement^='left'],
+.tooltip.bs-tooltip-left .arrow:before {
+    border-left-color: #161537;
+}
+
+.tooltip.right .tooltip-inner:before, .tooltip.bs-tooltip-auto[x-placement^='right'],
+.tooltip.bs-tooltip-right .arrow:before {
+    border-right-color: #161537;
+}
+
+.tooltip.top .tooltip-inner:before, .tooltip.bs-tooltip-auto[x-placement^='top'],
+.tooltip.bs-tooltip-top .arrow:before {
+    border-top-color: #161537;
+}
+
+.tooltip.bottom .tooltip-inner:before, .tooltip.bs-tooltip-auto[x-placement^='bottom'],
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-bottom-color: #161537;
+}

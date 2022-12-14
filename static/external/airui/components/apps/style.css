@@ -1,0 +1,284 @@
+/* MESSAGING APP */
+.air__messaging {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+}
+
+@media (max-width: 767px) {
+    .air__messaging {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+}
+
+.air__messaging__sidebar {
+    width: 16.66rem;
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+    .air__messaging__sidebar {
+        width: auto;
+    }
+}
+
+.air__messaging__searchIcon {
+    position: absolute;
+    color: #c3bedc;
+    font-size: 1.13rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+    left: 1rem;
+}
+
+.air__messaging__searchInput {
+    border: 1px solid #e4e9f0;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    background-color: #fff;
+    padding-left: 3rem;
+    padding-right: 1.33rem;
+    padding-top: 0.33rem;
+    padding-bottom: 0.26rem;
+    width: 100%;
+}
+
+.air__messaging__dialogItems {
+    height: 100%;
+}
+
+@media (max-width: 767px) {
+    .air__messaging__dialogItems {
+        max-height: 16rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.air__messaging__dialogItem {
+    padding: 0.66rem;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.air__messaging__dialogItem:last-child {
+    margin-bottom: 0;
+}
+
+.air__messaging__dialogItem:hover {
+    background-color: #f9fafc;
+}
+
+.air__messaging__dialogItem--current {
+    background-color: #f2f4f8;
+}
+
+.air__messaging__dialogItem--current:hover {
+    background-color: #f2f4f8;
+}
+
+.air__messaging__dialogInfo {
+    min-width: 0;
+}
+
+.air__messaging__dialogBadge {
+    min-width: 15px;
+}
+
+/* CALENDAR APP */
+.air__calendar__event {
+    margin-top: 0.33rem;
+    margin-bottom: 0.33rem;
+    margin-right: 1.33rem;
+    white-space: nowrap;
+}
+
+.air__calendar__event:last-child {
+    margin-right: 0;
+}
+
+/* MAIL APP */
+.air__mail {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+}
+
+@media (max-width: 767px) {
+    .air__mail {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+}
+
+.air__mail__sidebar {
+    width: 16.66rem;
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+    .air__mail__sidebar {
+        width: auto;
+    }
+}
+
+.air__mail__searchIcon {
+    position: absolute;
+    color: #c3bedc;
+    font-size: 1.13rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+    left: 1rem;
+}
+
+.air__mail__searchInput {
+    border: 1px solid #e4e9f0;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    background-color: #fff;
+    padding-left: 3rem;
+    padding-right: 1.33rem;
+    padding-top: 0.33rem;
+    padding-bottom: 0.26rem;
+    width: 100%;
+}
+
+.air__mail__categories {
+    height: 100%;
+}
+
+@media (max-width: 767px) {
+    .air__mail__categories {
+        max-height: 16rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.air__mail__category {
+    padding-top: 0.33rem;
+    padding-bottom: 0.53rem;
+    padding-left: 0.66rem;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+}
+
+.air__mail__category:hover {
+    background-color: #f9fafc;
+}
+
+.air__mail__category--current {
+    background-color: #f2f4f8;
+}
+
+.air__mail__category--current:hover {
+    background-color: #f2f4f8;
+}
+
+/* GALLERY APP */
+.air__gallery__control {
+    margin-right: 1.33rem;
+}
+
+.air__gallery__control:last-child {
+    margin-right: 0;
+}
+
+.air__gallery__items {
+    margin-right: -2.34rem;
+}
+
+.air__gallery__item {
+    margin-bottom: 2rem;
+    margin-right: 2.33rem;
+}
+
+.air__gallery__itemContent {
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    background-color: #f2f4f8;
+    width: 12.26rem;
+    height: 12.26rem;
+    margin-bottom: 1rem;
+}
+
+.air__gallery__itemContent:hover .air__gallery__itemControl {
+    z-index: 10;
+    opacity: 1;
+}
+
+.air__gallery__itemContent img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: auto;
+    height: 12.26rem;
+}
+
+.air__gallery__itemControl {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    opacity: 0;
+    background-color: rgba(120, 111, 164, 0.5);
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.air__gallery__itemControlContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* PROFILE APP */
+.air__profile__info {
+    border-bottom: 1px solid #e4e9f0;
+}

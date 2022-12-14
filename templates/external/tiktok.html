@@ -1,0 +1,3050 @@
+{% extends "includes/dashboard-base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="air__layout__content">
+        <div class="air__utils__content">
+          <div class="air__utils__heading">
+            <h5>Dashboard Tiktok</h5>
+          </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <h5 class="text-dark mb-4">Google Analytics Home</h5>
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-dark font-size-18 font-weight-bold mb-1">Year Profit</div>
+                  <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                  <div class="font-weight-bold font-size-36 text-dark">$437,246.00</div>
+                </div>
+                <div class="air__c2__chart height-200"></div>
+
+                <script>
+                  /////////////////////////////////////////////////////////////////////////////////////////
+                  // "widgets charts" module scripts
+
+                  ; (function ($) {
+                    'use strict'
+                    $(function () {
+                      /////////////////////////////////////////////////////////////////////////////////////////
+                      new Chartist.Line(
+                        '.air__c2__chart',
+                        {
+                          series: [
+                            {
+                              className: 'ct-series-d',
+                              data: [5, 9, 7, 8, 5, 3, 5, 4],
+                            },
+                          ],
+                        },
+                        {
+                          low: 0,
+                          chartPadding: {
+                            right: 0,
+                            left: 0,
+                            top: 0,
+                            bottom: 0,
+                          },
+                          fullWidth: true,
+                          showPoint: false,
+                          lineSmooth: false,
+                          axisY: {
+                            showGrid: false,
+                            showLabel: false,
+                            offset: 0,
+                          },
+                          axisX: {
+                            showGrid: false,
+                            showLabel: false,
+                            offset: 0,
+                          },
+                          showArea: true,
+                        },
+                      )
+                      /////////////////////////////////////////////////////////////////////////////////////////
+                    })
+                  })(jQuery)
+                </script>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="text-dark font-size-18 font-weight-bold mb-1">Year Profit</div>
+                      <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                      <div class="air__c9__chartContainer d-flex flex-wrap align-items-center">
+                        <div class="mr-3 mt-3 mb-3 position-relative">
+                          <canvas class="air__c9__chart" width="140" height="140"></canvas>
+                          <div class="air__c9__chartTooltip text-gray-5 font-size-28" id="chart9-tooltip"></div>
+                        </div>
+                      </div>
+
+                      <script>
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                          // "widgets charts" module scripts
+
+                          ; (function ($) {
+                            'use strict'
+                            $(function () {
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                              const chart9 = new Chart(document.getElementsByClassName('air__c9__chart'), {
+                                type: 'doughnut',
+                                data: {
+                                  labels: ['Boston', 'Gravity Falls', 'New York'],
+                                  datasets: [
+                                    {
+                                      data: [45, 45, 45],
+                                      backgroundColor: ['#46be8a', '#fb434a', '#1b55e3'],
+                                      borderColor: '#fff',
+                                      borderWidth: 2,
+                                      hoverBorderWidth: 0,
+                                      borderAlign: 'inner',
+                                    },
+                                  ],
+                                },
+                                options: {
+                                  animation: false,
+                                  responsive: true,
+                                  cutoutPercentage: 70,
+                                  legend: {
+                                    display: false,
+                                  },
+                                  legendCallback: function (chart) {
+                                    let text = []
+                                    text.push('<div class="air__c9__chartLegend flex-shrink-0">')
+                                    for (let i = 0; i < chart.data.labels.length; i++) {
+                                      const label = chart.data.labels[i]
+                                      const tabletBg = chart.data.datasets[0].backgroundColor[i]
+                                      text.push(
+                                        '<div class="d-flex align-items-center flex-nowrap mt-2 mb-2"><div class="air__utils__tablet mr-3" style="background-color:' +
+                                        tabletBg +
+                                        '"></div>' +
+                                        label +
+                                        '</div>',
+                                      )
+                                    }
+                                    text.push('</div>')
+                                    text = $(text.join(''))
+                                    return text
+                                  },
+                                  tooltips: {
+                                    enabled: false,
+                                    custom: function (tooltip) {
+                                      const tooltipEl = document.getElementById('chart9-tooltip')
+
+                                      // Hide if no tooltip
+                                      if (tooltip.opacity === 0) {
+                                        tooltipEl.style.opacity = 0
+                                        return
+                                      }
+
+                                      if (tooltip.body) {
+                                        const value = this._data.datasets[tooltip.dataPoints[0].datasetIndex].data[
+                                          tooltip.dataPoints[0].index
+                                        ].toLocaleString()
+                                        tooltipEl.innerHTML = value
+                                      }
+
+                                      tooltipEl.style.opacity = 1
+                                      tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px'
+                                    },
+                                  },
+                                },
+                              })
+                              const chart9Legend = chart9.generateLegend()
+                              $('.air__c9__chartContainer').append(chart9Legend[0])
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                            })
+                          })(jQuery)
+                      </script>
+                    </div>
+                  </div>
+                  <h5 class="text-dark mb-4">How do you acquire users?</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="text-dark font-size-18 font-weight-bold mb-1">Year Profit</div>
+                      <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                      <div class="air__c5__chart height-200"></div>
+
+                      <script>
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                          // "widgets charts" module scripts
+
+                          ; (function ($) {
+                            'use strict'
+                            $(function () {
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                              new Chartist.Bar(
+                                '.air__c5__chart',
+                                {
+                                  series: [
+                                    {
+                                      className: 'ct-series-b',
+                                      data: [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8, 6, 7],
+                                    },
+                                    {
+                                      className: 'ct-series-m',
+                                      data: [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4, 3, 9],
+                                    },
+                                  ],
+                                },
+                                {
+                                  stackBars: true,
+                                  fullWidth: true,
+                                  chartPadding: {
+                                    right: 0,
+                                    left: 0,
+                                    top: 5,
+                                    bottom: 0,
+                                  },
+                                  low: 0,
+                                  axisY: {
+                                    showGrid: false,
+                                    showLabel: false,
+                                    offset: 0,
+                                  },
+                                  axisX: {
+                                    showGrid: false,
+                                    showLabel: false,
+                                    offset: 0,
+                                  },
+                                  seriesBarDistance: 5,
+                                },
+                              )
+
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                            })
+                          })(jQuery)
+                      </script>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="text-dark font-size-18 font-weight-bold mb-1">Profit Change</div>
+                      <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                      <div class="air__c10__chartContainer d-flex flex-wrap align-items-center">
+                        <div class="mr-3 mt-3 mb-3 position-relative">
+                          <canvas class="air__c10__chart" width="140" height="140"></canvas>
+                          <div class="air__c10__chartTooltip text-center" id="chart10-tooltip">
+                            <div class="air__c10__tooltipLabel font-size-14 font-weight-bold text-dark"></div>
+                            <div class="air__c10__tooltipValue font-size-14 text-dark"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <script>
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                          // "widgets charts" module scripts
+
+                          ; (function ($) {
+                            'use strict'
+                            $(function () {
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                              const chart10 = new Chart(document.getElementsByClassName('air__c10__chart'), {
+                                type: 'doughnut',
+                                data: {
+                                  labels: ['Boston', 'Gravity Falls', 'Paris'],
+                                  datasets: [
+                                    {
+                                      data: [55, 15, 30],
+                                      backgroundColor: ['#46be8a', '#fb434a', '#1b55e3'],
+                                      borderColor: '#fff',
+                                      borderWidth: 2,
+                                      hoverBorderWidth: 0,
+                                      borderAlign: 'inner',
+                                    },
+                                  ],
+                                },
+                                options: {
+                                  animation: false,
+                                  responsive: true,
+                                  cutoutPercentage: 70,
+                                  legend: {
+                                    display: false,
+                                  },
+                                  legendCallback: function (chart) {
+                                    let text = []
+                                    text.push('<div class="air__c10__chartLegend flex-shrink-0">')
+                                    for (let i = 0; i < chart.data.labels.length; i++) {
+                                      const label = chart.data.labels[i]
+                                      const tabletBg = chart.data.datasets[0].backgroundColor[i]
+                                      text.push(
+                                        '<div class="d-flex align-items-center flex-nowrap mt-2 mb-2"><div class="air__utils__tablet mr-3" style="background-color:' +
+                                        tabletBg +
+                                        '"></div>' +
+                                        label +
+                                        '</div>',
+                                      )
+                                    }
+                                    text.push('</div>')
+                                    text = $(text.join(''))
+                                    return text
+                                  },
+                                  tooltips: {
+                                    enabled: false,
+                                    custom: function (tooltip) {
+                                      const tooltipEl = document.getElementById('chart10-tooltip')
+                                      // Hide if no tooltip
+                                      if (tooltip.opacity === 0) {
+                                        tooltipEl.style.opacity = 0
+                                        return
+                                      }
+
+                                      if (tooltip.body) {
+                                        const label = tooltip.body[0].lines[0].split(':')[0]
+                                        const value = this._data.datasets[tooltip.dataPoints[0].datasetIndex].data[
+                                          tooltip.dataPoints[0].index
+                                        ].toLocaleString()
+                                        tooltipEl.querySelector('.air__c10__tooltipLabel').innerHTML = label
+                                        tooltipEl.querySelector('.air__c10__tooltipValue').innerHTML = value
+                                      }
+
+                                      tooltipEl.style.opacity = 1
+                                      tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px'
+                                    },
+                                  },
+                                },
+                              })
+                              const chart10Legend = chart10.generateLegend()
+                              $('.air__c10__chartContainer').append(chart10Legend[0])
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                            })
+                          })(jQuery)
+                      </script>
+                    </div>
+                  </div>
+                  <h5 class="text-dark mb-4">How are your active users trending over time?</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-wrap mb-3">
+                        <div class="air__c1__item">
+                          <div class="font-size-18 text-dark font-weight-bold">
+                            +$12,367.36 <span class="text-success font-size-12 align-text-top">+25%</span>
+                          </div>
+                          <div class="text-uppercase text-gray-4">Total sales</div>
+                        </div>
+                        <div class="air__c1__item">
+                          <div class="font-size-18 text-dark font-weight-bold">
+                            +$5,367.36 <span class="text-danger font-size-12 align-text-top">-76%</span>
+                          </div>
+                          <div class="text-uppercase text-gray-4">Avg. Per Day</div>
+                        </div>
+                      </div>
+                      <div class="air__c1__chart ct-chart height-300"></div>
+
+                      <script>
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                          // "widgets charts" module scripts
+
+                          ; (function ($) {
+                            'use strict'
+                            $(function () {
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                              new Chartist.Bar(
+                                '.air__c1__chart',
+                                {
+                                  series: [
+                                    {
+                                      className: 'ct-series-n',
+                                      data: [10, 40, 30, 30, 55, 25],
+                                    },
+                                    {
+                                      className: 'ct-series-a',
+                                      data: [20, 60, 50, 45, 50, 60],
+                                    },
+                                  ],
+                                },
+                                {
+                                  seriesBarDistance: 10,
+                                  horizontalBars: true,
+                                  axisY: {
+                                    showGrid: false,
+                                    showLabel: false,
+                                    offset: 0,
+                                  },
+                                },
+                              )
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                            })
+                          })(jQuery)
+                      </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <h5 class="text-dark mb-4">Ask analytics Intelligence</h5>
+              <div class="card">
+                <div class="card-body">
+                  <ul class="list-unstyled">
+                    <li class="air__l15__item">
+                      <a href="#" class="air__l15__itemLink">
+                        <div class="air__l15__itemCover mr-3">
+                          <img src="{% static 'external/airui/components/core/img/content/hands.png' %}" alt="Hands" />
+                        </div>
+                        <div>
+                          <div class="text-blue">New York Times</div>
+                          <div class="font-weight-bold mb-2">Bitcoin Costs $10k+</div>
+                          <div>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry's standard dummy
+                            text ...
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="air__l15__item">
+                      <a href="#" class="air__l15__itemLink">
+                        <div class="air__l15__itemCover mr-3">
+                          <img src="{% static 'external/airui/components/core/img/content/hands.png' %}" alt="Hands" />
+                        </div>
+                        <div>
+                          <div class="text-blue">CNN</div>
+                          <div class="font-weight-bold mb-2">Bitcoin Costs $10k+</div>
+                          <div>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry's standard dummy
+                            text ...
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="air__l15__item">
+                      <a href="#" class="air__l15__itemLink">
+                        <div class="air__l15__itemCover mr-3">
+                          <img src="{% static 'external/airui/components/core/img/content/hands.png' %}" alt="Hands" />
+                        </div>
+                        <div>
+                          <div class="text-blue">English Speakers</div>
+                          <div class="font-weight-bold mb-2">Bitcoin Costs $10k+</div>
+                          <div>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry's standard dummy
+                            text ...
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h5 class="text-dark mb-4">What are your top devices?</h5>
+              <div class="card">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="bg-success text-white text-uppercase px-3 py-1 mb-2">
+                      Today - 7 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-gray-6 mb-0">
+                        <tbody>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--danger mr-3"></div>
+                              California
+                            </td>
+                            <td class="text-right"><strong>+78,366,263.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--primary mr-3"></div>
+                              Texas
+                            </td>
+                            <td class="text-right"><strong>+58,165,000.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--success mr-3"></div>
+                              Wyoming
+                            </td>
+                            <td class="text-right"><strong>+26,156,267.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--info mr-3"></div>
+                              Florida
+                            </td>
+                            <td class="text-right"><strong>+18,823,026.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--orange mr-3"></div>
+                              New York
+                            </td>
+                            <td class="text-right"><strong>+8,125,642.00$</strong></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="bg-gray-1 text-gray-6 text-uppercase px-3 py-1 mb-2">
+                      6 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-muted mb-0">
+                        <tbody>
+                          <tr>
+                            <td>No Items</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Your profit
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        Average Weekly Profit
+                      </p>
+                    </div>
+                    <p class="text-success font-weight-bold font-size-24 mb-0">
+                      +29,931
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-dark font-size-18 font-weight-bold mb-1">Year Profit</div>
+                  <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                  <div class="air__c9__chartContainer d-flex flex-wrap align-items-center">
+                    <div class="mr-3 mt-3 mb-3 position-relative">
+                      <canvas class="air__c9__chart" width="140" height="140"></canvas>
+                      <div class="air__c9__chartTooltip text-gray-5 font-size-28" id="chart9-tooltip"></div>
+                    </div>
+                  </div>
+
+                  <script>
+                      /////////////////////////////////////////////////////////////////////////////////////////
+                      // "widgets charts" module scripts
+
+                      ; (function ($) {
+                        'use strict'
+                        $(function () {
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                          const chart9 = new Chart(document.getElementsByClassName('air__c9__chart'), {
+                            type: 'doughnut',
+                            data: {
+                              labels: ['Boston', 'Gravity Falls', 'New York'],
+                              datasets: [
+                                {
+                                  data: [45, 45, 45],
+                                  backgroundColor: ['#46be8a', '#fb434a', '#1b55e3'],
+                                  borderColor: '#fff',
+                                  borderWidth: 2,
+                                  hoverBorderWidth: 0,
+                                  borderAlign: 'inner',
+                                },
+                              ],
+                            },
+                            options: {
+                              animation: false,
+                              responsive: true,
+                              cutoutPercentage: 70,
+                              legend: {
+                                display: false,
+                              },
+                              legendCallback: function (chart) {
+                                let text = []
+                                text.push('<div class="air__c9__chartLegend flex-shrink-0">')
+                                for (let i = 0; i < chart.data.labels.length; i++) {
+                                  const label = chart.data.labels[i]
+                                  const tabletBg = chart.data.datasets[0].backgroundColor[i]
+                                  text.push(
+                                    '<div class="d-flex align-items-center flex-nowrap mt-2 mb-2"><div class="air__utils__tablet mr-3" style="background-color:' +
+                                    tabletBg +
+                                    '"></div>' +
+                                    label +
+                                    '</div>',
+                                  )
+                                }
+                                text.push('</div>')
+                                text = $(text.join(''))
+                                return text
+                              },
+                              tooltips: {
+                                enabled: false,
+                                custom: function (tooltip) {
+                                  const tooltipEl = document.getElementById('chart9-tooltip')
+
+                                  // Hide if no tooltip
+                                  if (tooltip.opacity === 0) {
+                                    tooltipEl.style.opacity = 0
+                                    return
+                                  }
+
+                                  if (tooltip.body) {
+                                    const value = this._data.datasets[tooltip.dataPoints[0].datasetIndex].data[
+                                      tooltip.dataPoints[0].index
+                                    ].toLocaleString()
+                                    tooltipEl.innerHTML = value
+                                  }
+
+                                  tooltipEl.style.opacity = 1
+                                  tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px'
+                                },
+                              },
+                            },
+                          })
+                          const chart9Legend = chart9.generateLegend()
+                          $('.air__c9__chartContainer').append(chart9Legend[0])
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                        })
+                      })(jQuery)
+                  </script>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-dark font-size-18 font-weight-bold mb-1">Profit Change</div>
+                  <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                  <div class="air__c10__chartContainer d-flex flex-wrap align-items-center">
+                    <div class="mr-3 mt-3 mb-3 position-relative">
+                      <canvas class="air__c10__chart" width="140" height="140"></canvas>
+                      <div class="air__c10__chartTooltip text-center" id="chart10-tooltip">
+                        <div class="air__c10__tooltipLabel font-size-14 font-weight-bold text-dark"></div>
+                        <div class="air__c10__tooltipValue font-size-14 text-dark"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <script>
+                      /////////////////////////////////////////////////////////////////////////////////////////
+                      // "widgets charts" module scripts
+
+                      ; (function ($) {
+                        'use strict'
+                        $(function () {
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                          const chart10 = new Chart(document.getElementsByClassName('air__c10__chart'), {
+                            type: 'doughnut',
+                            data: {
+                              labels: ['Boston', 'Gravity Falls', 'Paris'],
+                              datasets: [
+                                {
+                                  data: [55, 15, 30],
+                                  backgroundColor: ['#46be8a', '#fb434a', '#1b55e3'],
+                                  borderColor: '#fff',
+                                  borderWidth: 2,
+                                  hoverBorderWidth: 0,
+                                  borderAlign: 'inner',
+                                },
+                              ],
+                            },
+                            options: {
+                              animation: false,
+                              responsive: true,
+                              cutoutPercentage: 70,
+                              legend: {
+                                display: false,
+                              },
+                              legendCallback: function (chart) {
+                                let text = []
+                                text.push('<div class="air__c10__chartLegend flex-shrink-0">')
+                                for (let i = 0; i < chart.data.labels.length; i++) {
+                                  const label = chart.data.labels[i]
+                                  const tabletBg = chart.data.datasets[0].backgroundColor[i]
+                                  text.push(
+                                    '<div class="d-flex align-items-center flex-nowrap mt-2 mb-2"><div class="air__utils__tablet mr-3" style="background-color:' +
+                                    tabletBg +
+                                    '"></div>' +
+                                    label +
+                                    '</div>',
+                                  )
+                                }
+                                text.push('</div>')
+                                text = $(text.join(''))
+                                return text
+                              },
+                              tooltips: {
+                                enabled: false,
+                                custom: function (tooltip) {
+                                  const tooltipEl = document.getElementById('chart10-tooltip')
+                                  // Hide if no tooltip
+                                  if (tooltip.opacity === 0) {
+                                    tooltipEl.style.opacity = 0
+                                    return
+                                  }
+
+                                  if (tooltip.body) {
+                                    const label = tooltip.body[0].lines[0].split(':')[0]
+                                    const value = this._data.datasets[tooltip.dataPoints[0].datasetIndex].data[
+                                      tooltip.dataPoints[0].index
+                                    ].toLocaleString()
+                                    tooltipEl.querySelector('.air__c10__tooltipLabel').innerHTML = label
+                                    tooltipEl.querySelector('.air__c10__tooltipValue').innerHTML = value
+                                  }
+
+                                  tooltipEl.style.opacity = 1
+                                  tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px'
+                                },
+                              },
+                            },
+                          })
+                          const chart10Legend = chart10.generateLegend()
+                          $('.air__c10__chartContainer').append(chart10Legend[0])
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                        })
+                      })(jQuery)
+                  </script>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body bg-gray-2">
+                  <div class="h-100 pt-5 pb-5 text-center">
+                    <i class="fe fe-at-sign font-size-50"></i>
+                  </div>
+                  <div class="d-flex mb-1">
+                    <div class="text-uppercase font-weight-bold text-dark mr-auto">
+                      New users
+                    </div>
+                    <div>
+                      +20% Goal Reached
+                    </div>
+                  </div>
+                  <div class="d-flex mb-2">
+                    <div class="font-size-24 font-weight-bold text-success mr-auto">+3,125</div>
+                    <div class="font-size-24 text-gray-4">5,000</div>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" style="width: 50%" role="progressbar" aria-valuenow="50"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Orders
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        All Time Orders
+                      </p>
+                    </div>
+                    <p class="text-primary font-weight-bold font-size-24 mb-0">
+                      1,800
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <p class="text-dark font-size-48 font-weight-bold mb-2">
+                    $29,931
+                  </p>
+                  <p class="text-uppercase text-muted mb-3">
+                    Revenue today
+                  </p>
+                  <p class="mb-4">
+                    Lorem ipsum dolor sit amit,consectetur eiusmdd tempory incididunt ut labore et dolore magna elit
+                  </p>
+                  <a href="javascript: void(0);" class="btn btn-outline-primary mb-1">View history</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <ul class="list-unstyled air__l18__list">
+                    <li class="air__l18__item text-muted">
+                      <div class="text-uppercase mb-1">Organic search</div>
+                      <div>
+                        <div class="text-nowrap d-inline-block">
+                          <div class="air__utils__donut air__utils__donut--danger"></div>
+                          <span class="font-weight-bold text-gray-6">1,125,367</span>
+                        </div>
+                        +25%
+                      </div>
+                    </li>
+                    <li class="air__l18__item text-muted">
+                      <div class="text-uppercase mb-1">Google</div>
+                      <div>
+                        <div class="text-nowrap d-inline-block">
+                          <div class="air__utils__donut air__utils__donut--primary"></div>
+                          <span class="font-weight-bold text-gray-6">28,235</span>
+                        </div>
+                        +85%
+                      </div>
+                    </li>
+                    <li class="air__l18__item text-muted">
+                      <div class="text-uppercase mb-1">Microsoft</div>
+                      <div>
+                        <div class="text-nowrap d-inline-block">
+                          <div class="air__utils__donut air__utils__donut--success"></div>
+                          <span class="font-weight-bold text-gray-6">874,125</span>
+                        </div>
+                        +16%
+                      </div>
+                    </li>
+                    <li class="air__l18__item text-muted">
+                      <div class="text-uppercase mb-1">Yandex</div>
+                      <div>
+                        <div class="text-nowrap d-inline-block">
+                          <div class="air__utils__donut air__utils__donut--orange"></div>
+                          <span class="font-weight-bold text-gray-6">28,235</span>
+                        </div>
+                        +154%
+                      </div>
+                    </li>
+                    <li class="air__l18__item text-muted">
+                      <div class="text-uppercase mb-1">Bing Search</div>
+                      <div>
+                        <div class="text-nowrap d-inline-block">
+                          <div class="air__utils__donut air__utils__donut--default"></div>
+                          <span class="font-weight-bold text-gray-6">3,267</span>
+                        </div>
+                        +87%
+                      </div>
+                    </li>
+                    <li class="air__l18__item text-muted">
+                      <div class="text-uppercase mb-1">Chinese aw inc</div>
+                      <div>
+                        <div class="text-nowrap d-inline-block">
+                          <div class="air__utils__donut air__utils__donut--default"></div>
+                          <span class="font-weight-bold text-gray-6">51,008</span>
+                        </div>
+                        +28%
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="bg-gray-1 text-gray-6 text-uppercase px-3 py-1 mb-2">
+                      Today - 7 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-gray-6 mb-0">
+                        <tbody>
+                          <tr>
+                            <td>California</td>
+                            <td class="text-right"><strong>+78,366,263.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Texas</td>
+                            <td class="text-right"><strong>+58,165,000.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Wyoming</td>
+                            <td class="text-right"><strong>+26,156,267.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Florida</td>
+                            <td class="text-right"><strong>+18,823,026.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>New York</td>
+                            <td class="text-right"><strong>+8,125,642.00$</strong></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="bg-gray-1 text-gray-6 text-uppercase px-3 py-1 mb-2">
+                      6 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-muted mb-0">
+                        <tbody>
+                          <tr>
+                            <td>No Items</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Refunds
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        Averache Weekly Reunds
+                      </p>
+                    </div>
+                    <p class="text-danger font-weight-bold font-size-24 mb-0">
+                      -$8,474
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="height-200 d-flex flex-column air__g13-1__head">
+                  <div class="card-header card-header-flex border-bottom-0">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h5 class="mb-0 text-white">Basic Card</h5>
+                    </div>
+                    <div class="ml-auto d-flex flex-column justify-content-center">
+                      <div>
+                        <div class="dropdown d-inline-block">
+                          <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-noarrow"
+                            data-toggle="dropdown" aria-expanded="false">
+                            <i class="fe fe-more-horizontal"></i>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-right" role="menu" x-placement="bottom-end">
+                            <a class="dropdown-item" href="javascript: void(0)">Action</a>
+                            <a class="dropdown-item" href="javascript: void(0)">Another action</a>
+                            <a class="dropdown-item" href="javascript: void(0)">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript: void(0)">Separated link</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-auto mb-3">
+                    <div class="text-white font-size-24 font-weight-bold pl-4">David Beckham</div>
+                  </div>
+                </div>
+                <div class="card card-borderless">
+                  <div class="card-header border-bottom-0">
+                    <div class="d-flex mb-1">
+                      <div class="text-dark text-uppercase font-weight-bold mr-auto">
+                        New users
+                      </div>
+                      <div class="text-gray-6">
+                        +60% Goal Reached
+                      </div>
+                    </div>
+                    <div class="d-flex mb-2">
+                      <div class="text-success font-size-24 font-weight-bold mr-auto">+3,125</div>
+                      <div class="text-gray-4 font-size-24">5,000</div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-success" style="width: 60%" role="progressbar" aria-valuenow="60"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="card-body pt-1">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                    but also the leap into electronic typesetting, remaining essentially unchanged.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-dark font-size-18 font-weight-bold mb-1">Income Progress</div>
+                  <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                  <div class="font-weight-bold font-size-36 text-dark mb-2">$390,012.01</div>
+                  <div class="d-flex align-items-center">
+                    <div class="air__c6__progressIcon bg-gray-4 text-white mr-3">
+                      <i class="fe fe-menu font-size-18"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div class="text-dark font-size-18 font-weight-bold text-nowrap mb-2">
+                        78% from $500,000.00
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-success" style="width: 70%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="air__c6__chart height-200"></div>
+
+                <script>
+                    /////////////////////////////////////////////////////////////////////////////////////////
+                    // "widgets charts" module scripts
+
+                    ; (function ($) {
+                      'use strict'
+                      $(function () {
+                        /////////////////////////////////////////////////////////////////////////////////////////
+                        new Chartist.Line(
+                          '.air__c6__chart',
+                          {
+                            series: [
+                              {
+                                className: 'ct-series-h',
+                                data: [4, 6, 4, 3, 5, 7, 8, 7],
+                              },
+                            ],
+                          },
+                          {
+                            low: 0,
+                            chartPadding: {
+                              right: 0,
+                              left: 0,
+                              top: 5,
+                              bottom: 0,
+                            },
+                            fullWidth: true,
+                            showPoint: false,
+                            lineSmooth: false,
+                            axisY: {
+                              showGrid: false,
+                              showLabel: false,
+                              offset: 0,
+                            },
+                            axisX: {
+                              showGrid: false,
+                              showLabel: false,
+                              offset: 0,
+                            },
+                            showArea: true,
+                          },
+                        )
+                        /////////////////////////////////////////////////////////////////////////////////////////
+                      })
+                    })(jQuery)
+                </script>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="air__utils__textDivider mb-2">
+                    <h4 class="air__utils__textDivider__content font-size-24 font-weight-bold">Active Users</h4>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-borderless table-vertical-middle">
+                      <tr>
+                        <th style="width: 45px;"></th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Action name</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Location</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase text-right">
+                          Value
+                        </th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Description</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td style="width: 45px;">
+                          <label class="air__utils__control air__utils__control__checkbox mb-0">
+                            <input type="checkbox" checked="checked" />
+                            <span class="air__utils__control__indicator"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <div>New Users</div>
+                        </td>
+                        <td class="text-blue">
+                          New York
+                        </td>
+                        <td class="font-weight-bold text-right">
+                          +3125
+                        </td>
+                        <td class="text-gray-6">Lorem Ipsum is simply dummy text of the printing...</td>
+                        <td>
+                          <div class="air__utils__avatarGroup">
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/1.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/2.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/3.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/4.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <button class="air__utils__avatarGroupAdd">
+                              <i class="fe fe-plus"></i>
+                            </button>
+                          </div>
+                        </td>
+                        <td class="text-nowrap">
+                          <button type="button" class="btn btn-outline-success mr-2 mb-2">Accept</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 45px;">
+                          <label class="air__utils__control air__utils__control__checkbox mb-0">
+                            <input type="checkbox" checked="checked" />
+                            <span class="air__utils__control__indicator"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <div>New Reports</div>
+                        </td>
+                        <td class="text-blue">
+                          Palo Alto
+                        </td>
+                        <td class="font-weight-bold text-right">
+                          +643
+                        </td>
+                        <td class="text-gray-6">Lorem Ipsum is simply dummy text of the printing...</td>
+                        <td>
+                          <div class="air__utils__avatarGroup">
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/1.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/2.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <button class="air__utils__avatarGroupAdd">
+                              <i class="fe fe-plus"></i>
+                            </button>
+                          </div>
+                        </td>
+                        <td class="text-nowrap">
+                          <button type="button" class="btn btn-outline-success mr-2 mb-2">Accept</button>
+                        </td>
+                      </tr>
+                      <tr style="width: 45px;">
+                        <td>
+                          <label class="air__utils__control air__utils__control__checkbox mb-0">
+                            <input type="checkbox" checked="checked" />
+                            <span class="air__utils__control__indicator"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <div>Quote Submits</div>
+                        </td>
+                        <td class="text-blue">
+                          Las Vegas
+                        </td>
+                        <td class="font-weight-bold text-right">
+                          +982
+                        </td>
+                        <td class="text-gray-6">Lorem Ipsum is simply dummy text of the printing...</td>
+                        <td>
+                          <div class="air__utils__avatarGroup">
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/1.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/2.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/3.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <button class="air__utils__avatarGroupAdd">
+                              <i class="fe fe-plus"></i>
+                            </button>
+                          </div>
+                        </td>
+                        <td class="text-nowrap">
+                          <button type="button" class="btn btn-outline-success mr-2 mb-2">Accept</button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-nowrap text-dark font-size-50 font-weight-bold">
+                    $29,931 <sup class="text-uppercase text-gray-6 font-size-30">paid</sup>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-borderless">
+                      <tr>
+                        <th style="width: 70px;"></th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Action name</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Location</th>
+                        <th style="width: 80px;"></th>
+                      </tr>
+                      <tr>
+                        <td style="width: 70px;">
+                          <div class="air__utils__avatar">
+                            <img src="{% static 'external/airui/components/core/img/avatars/5.jpg' %}"
+                              alt="Mary Stanform" />
+                          </div>
+                        </td>
+                        <td>
+                          <div>New Users</div>
+                          <div class="text-gray-4">Administrator</div>
+                        </td>
+                        <td class="text-blue">
+                          New York
+                        </td>
+                        <td class="text-nowrap" style="width: 80px;">
+                          <button class="btn btn-light">
+                            <span class="text-blue">Add</span>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 70px;">
+                          <div class="air__utils__avatar">
+                            <img src="{% static 'external/airui/components/core/img/avatars/4.jpg' %}"
+                              alt="Jamie Rockstar" />
+                          </div>
+                        </td>
+                        <td>
+                          <div>New Reports</div>
+                          <div class="text-gray-4">Support</div>
+                        </td>
+                        <td class="text-blue">
+                          Palo Alto
+                        </td>
+                        <td class="text-nowrap" style="width: 80px;">
+                          <button class="btn btn-light">
+                            <span class="text-blue">Add</span>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 70px;">
+                          <div class="air__utils__avatar">
+                            <img src="{% static 'external/airui/components/core/img/avatars/3.jpg' %}"
+                              alt="Mary Stanform" />
+                          </div>
+                        </td>
+                        <td>
+                          <div>Quote Submits</div>
+                          <div class="text-gray-4">Developer</div>
+                        </td>
+                        <td class="text-blue">
+                          Las Vegas
+                        </td>
+                        <td class="text-nowrap" style="width: 80px;">
+                          <button class="btn btn-light">
+                            <span class="text-blue">Add</span>
+                          </button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="air__t4__head">
+                    <div class="air__t4__headItem mb-3 pr-3">
+                      <div class="air__t4__headIcon bg-gray-4 text-white mr-3">
+                        <i class="fe fe-menu font-size-18"></i>
+                      </div>
+                      <div>
+                        <div class="text-uppercase text-muted text-nowrap">Cross Earnings</div>
+                        <div class="font-weight-bold text-dark">+125,367.36</div>
+                      </div>
+                    </div>
+                    <div class="air__t4__headItem mb-3">
+                      <div class="air__t4__headIcon bg-gray-4 text-white mr-3">
+                        <i class="fe fe-cloud font-size-18"></i>
+                      </div>
+                      <div>
+                        <div class="text-uppercase text-muted text-nowrap">Tax witheld</div>
+                        <div class="font-weight-bold text-dark">-$12,350.00</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-borderless">
+                      <tr>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Action name</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Location</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Phone</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase text-right">
+                          Value
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>New Users</td>
+                        <td class="text-blue">New York</td>
+                        <td>+1 800 364 4774</td>
+                        <td class="font-weight-bold text-right">+3,125</td>
+                      </tr>
+                      <tr>
+                        <td>New Reports</td>
+                        <td class="text-blue">Palo Alto</td>
+                        <td>+1 800 364 4121</td>
+                        <td class="font-weight-bold text-right">+643</td>
+                      </tr>
+                      <tr>
+                        <td>Quote Submits</td>
+                        <td class="text-blue">Las Vegas</td>
+                        <td>+1 800 364 9743</td>
+                        <td class="font-weight-bold text-right">+982</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-header card-header-flex">
+                  <div class="d-flex align-items-stretch">
+                    <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-bold nav-tabs-noborder nav-tabs-stretched">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#tab-orders-content" data-toggle="tab"
+                          id="tab-orders">Orders</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#tab-revenue-content" data-toggle="tab" id="tab-revenue">Revenue</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="tab-pane" id="tab-orders-content" role="tabpanel" aria-labelledby="tab-orders-content">
+                    <div class="air__c3__chart height-300"></div>
+                    <div class="d-flex flex-wrap">
+                      <div class="mr-5 mb-2">
+                        <div class="text-nowrap text-uppercase text-gray-4">
+                          <div class="air__utils__donut air__utils__donut--success"></div>
+                          Gross revenue
+                        </div>
+                        <div class="font-weight-bold font-size-18 text-dark">+$125,367.36</div>
+                      </div>
+                      <div class="mr-5 mb-2">
+                        <div class="text-nowrap text-uppercase text-gray-4">
+                          <div class="air__utils__donut air__utils__donut--primary"></div>
+                          Gross Earnings
+                        </div>
+                        <div class="font-weight-bold font-size-18 text-dark">+$125,367.36</div>
+                      </div>
+                    </div>
+
+                    <script>
+                        /////////////////////////////////////////////////////////////////////////////////////////
+                        // "widgets charts" module scripts
+
+                        ; (function ($) {
+                          'use strict'
+                          $(function () {
+                            /////////////////////////////////////////////////////////////////////////////////////////
+                            const chartist3 = new Chartist.Bar(
+                              '.air__c3__chart',
+                              {
+                                labels: [
+                                  'Jan',
+                                  'Feb',
+                                  'Mar',
+                                  'Apr',
+                                  'May',
+                                  'Jun',
+                                  'Jul',
+                                  'Aug',
+                                  'Sep',
+                                  'Oct',
+                                  'Nov',
+                                  'Dec',
+                                ],
+                                series: [
+                                  {
+                                    className: 'ct-series-a',
+                                    data: [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+                                  },
+                                  {
+                                    className: 'ct-series-b',
+                                    data: [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4],
+                                  },
+                                ],
+                              },
+                              {
+                                fullWidth: true,
+                                chartPadding: {
+                                  right: 0,
+                                  left: 0,
+                                  top: 5,
+                                  bottom: 0,
+                                },
+                                low: 0,
+                                axisY: {
+                                  showGrid: false,
+                                  showLabel: false,
+                                  offset: 0,
+                                },
+                                axisX: {
+                                  showGrid: false,
+                                },
+                                seriesBarDistance: 15,
+                              },
+                            )
+
+                            chartist3.on('draw', function (data) {
+                              if (data.type === 'bar') {
+                                data.group.append(
+                                  new Chartist.Svg('line', {
+                                    x1: data.x1,
+                                    x2: data.x2,
+                                    y1: data.y2,
+                                    y2: 0,
+                                    stroke: '#e4e9f0',
+                                    'stroke-width': '10',
+                                  }),
+                                )
+                              }
+                            })
+                            /////////////////////////////////////////////////////////////////////////////////////////
+                          })
+                        })(jQuery)
+                    </script>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header card-header-flex">
+                  <div class="d-flex align-items-stretch">
+                    <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-bold nav-tabs-noborder nav-tabs-stretched">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#tab-bestsellers-content" data-toggle="tab"
+                          id="tab-bestsellers">Bestsellers</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#tab-mostviewed-content" data-toggle="tab" id="tab-mostviewed">Most
+                          Viewed</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#tab-highrated-content" data-toggle="tab" id="tab-highrated">Highest
+                          Rated</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="card overflow-hidden">
+                        <div class="air__ecommerce__productMark">New</div>
+                        <div class="card-body">
+                          <a class="air__ecommerce__productFavorite text-gray-3" href="javascript: void(0);"><i
+                              class="fe fe-heart font-size-21"></i></a>
+                          <div class="border-bottom height-250 air__ecommerce__productImage mb-3">
+                            <img class="img-fluid"
+                              src="{% static 'external/airui/components/core/img/products/001.jpg' %}" alt="Product" />
+                          </div>
+                          <div class="font-size-24 font-weight-bold text-dark mb-2">
+                            $199.28 <del class="align-text-top font-size-14">$299.28</del>
+                          </div>
+                          <div>
+                            <a href="javascript:void(0);" class="text-blue font-size-18">
+                              TP-Link AC1750 Smart WiFi Router - Dual Band Gigabit Wireless Internet Routers
+                              for Home
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="card overflow-hidden">
+                        <div class="card-body">
+                          <a class="air__ecommerce__productFavorite text-dark" href="javascript: void(0);"><i
+                              class="fe fe-heart font-size-21"></i></a>
+                          <div class="border-bottom height-250 air__ecommerce__productImage mb-3">
+                            <img class="img-fluid"
+                              src="{% static 'external/airui/components/core/img/products/002.jpg' %}" alt="Product" />
+                          </div>
+                          <div class="font-size-24 font-weight-bold text-dark mb-2">
+                            $99.99 <del class="align-text-top font-size-14">$199.99</del>
+                          </div>
+                          <div>
+                            <a href="javascript:void(0);" class="text-blue font-size-18">
+                              TP-Link AC1750 Smart WiFi Router - Dual Band Gigabit Wireless Internet Routers
+                              for Home
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="card overflow-hidden">
+                        <div class="card-body">
+                          <a class="air__ecommerce__productFavorite text-dark" href="javascript: void(0);"><i
+                              class="fe fe-heart font-size-21"></i></a>
+                          <div class="border-bottom height-250 air__ecommerce__productImage mb-3">
+                            <img class="img-fluid"
+                              src="{% static 'external/airui/components/core/img/products/003.jpg' %}" alt="Product" />
+                          </div>
+                          <div class="font-size-24 font-weight-bold text-dark mb-2">
+                            $99.99 <del class="align-text-top font-size-14">$199.99</del>
+                          </div>
+                          <div>
+                            <a href="javascript:void(0);" class="text-blue font-size-18">
+                              TP-Link AC1750 Smart WiFi Router - Dual Band Gigabit Wireless Internet Routers
+                              for Home
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="card overflow-hidden">
+                        <div class="card-body">
+                          <a class="air__ecommerce__productFavorite text-dark" href="javascript: void(0);"><i
+                              class="fe fe-heart font-size-21"></i></a>
+                          <div class="border-bottom height-250 air__ecommerce__productImage mb-3">
+                            <img class="img-fluid"
+                              src="{% static 'external/airui/components/core/img/products/002.jpg' %}" alt="Product" />
+                          </div>
+                          <div class="font-size-24 font-weight-bold text-dark mb-2">
+                            $99.99 <del class="align-text-top font-size-14">$199.99</del>
+                          </div>
+                          <div>
+                            <a href="javascript:void(0);" class="text-blue font-size-18">
+                              TP-Link AC1750 Smart WiFi Router - Dual Band Gigabit Wireless Internet Routers
+                              for Home
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card text-white bg-success">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase font-weight-bold mb-1">
+                        Refunds
+                      </p>
+                      <p class="mb-0">
+                        All Time Orders
+                      </p>
+                    </div>
+                    <p class="font-weight-bold font-size-24 mb-0">
+                      +$8,412
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Your profit
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        Average Weekly Profit
+                      </p>
+                    </div>
+                    <p class="text-success font-weight-bold font-size-24 mb-0">
+                      +29,931
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Orders
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        All Time Orders
+                      </p>
+                    </div>
+                    <p class="text-primary font-weight-bold font-size-24 mb-0">
+                      1,800
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Refunds
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        Averache Weekly Reunds
+                      </p>
+                    </div>
+                    <p class="text-danger font-weight-bold font-size-24 mb-0">
+                      -$8,474
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="bg-gray-1 text-gray-6 text-uppercase px-3 py-1 mb-2">
+                      Today - 7 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-gray-6 mb-0">
+                        <tbody>
+                          <tr>
+                            <td>California</td>
+                            <td class="text-right"><strong>+78,366,263.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Texas</td>
+                            <td class="text-right"><strong>+58,165,000.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Wyoming</td>
+                            <td class="text-right"><strong>+26,156,267.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Florida</td>
+                            <td class="text-right"><strong>+18,823,026.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>New York</td>
+                            <td class="text-right"><strong>+8,125,642.00$</strong></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="bg-gray-1 text-gray-6 text-uppercase px-3 py-1 mb-2">
+                      6 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-muted mb-0">
+                        <tbody>
+                          <tr>
+                            <td>No Items</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="bg-success text-white text-uppercase px-3 py-1 mb-2">
+                      Today - 7 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-gray-6 mb-0">
+                        <tbody>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--danger mr-3"></div>
+                              California
+                            </td>
+                            <td class="text-right"><strong>+78,366,263.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--primary mr-3"></div>
+                              Texas
+                            </td>
+                            <td class="text-right"><strong>+58,165,000.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--success mr-3"></div>
+                              Wyoming
+                            </td>
+                            <td class="text-right"><strong>+26,156,267.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--info mr-3"></div>
+                              Florida
+                            </td>
+                            <td class="text-right"><strong>+18,823,026.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">
+                              <div class="air__utils__donut air__utils__donut--orange mr-3"></div>
+                              New York
+                            </td>
+                            <td class="text-right"><strong>+8,125,642.00$</strong></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="bg-gray-1 text-gray-6 text-uppercase px-3 py-1 mb-2">
+                      6 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-muted mb-0">
+                        <tbody>
+                          <tr>
+                            <td>No Items</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+              /////////////////////////////////////////////////////////////////////////////////////////
+              // "ECOMMERCE" module scripts
+
+              ; (function ($) {
+                'use strict'
+                $(function () {
+                  /////////////////////////////////////////////////////////////////////////////////////////
+
+                  $('.air__ecommerce__productFavorite').on('click', function () {
+                    $(this).toggleClass('text-dark')
+                  })
+
+                  /////////////////////////////////////////////////////////////////////////////////////////
+                })
+              })(jQuery)
+          </script>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-header card-header-flex">
+                  <div class="d-flex align-items-stretch">
+                    <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-bold nav-tabs-noborder nav-tabs-stretched">
+                      <li class="nav-item">
+                        <a class="text-uppercase nav-link" href="#tab-hour-content" data-toggle="tab"
+                          aria-selected="true" id="tab-hour">Hour</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="text-uppercase nav-link" href="#tab-day-content" data-toggle="tab"
+                          aria-selected="false" id="tab-day">Day</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="text-uppercase nav-link active" href="#tab-week-content" data-toggle="tab"
+                          id="tab-week">Week</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="text-uppercase nav-link" href="#tab-month-content" data-toggle="tab"
+                          id="tab-month">Month</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="tab-pane" id="tab-hour-content" role="tabpanel" aria-labelledby="tab-hour-content"></div>
+                  <div class="tab-pane" id="tab-day-content" role="tabpanel" aria-labelledby="tab-day-content"></div>
+                  <div class="tab-pane active" id="tab-week-content" role="tabpanel" aria-labelledby="tab-week-content">
+                    <div class="air__cryptoDashboard__weekChart position-relative height-300"></div>
+                  </div>
+                  <div class="tab-pane" id="tab-month-content" role="tabpanel" aria-labelledby="tab-month-content">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-wrap align-items-center mb-2">
+                        <div class="flex-shrink-0 air__utils__avatar air__utils__avatar--size64 mr-4 mb-2">
+                          <img src="{% static 'external/airui/components/core/img/avatars/5.jpg' %}"
+                            alt="Mary Stanform" />
+                        </div>
+                        <div class="mb-2">
+                          <div class="text-dark font-size-18 font-weight-bold text-nowrap">
+                            Helen Maggie
+                            <i class="align-text-bottom fe fe-check-square text-success ml-2 font-size-24 "></i>
+                          </div>
+                          <div class="text-uppercase">Support team</div>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <a href="javascript: void(0);" class="btn btn-outline-primary mr-2">Chat</a>
+                        <a href="javascript: void(0);" class="btn btn-outline-danger">Unfollow</a>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table table-borderless">
+                          <tr>
+                            <td class="text-gray-6 pl-0">Location</td>
+                            <td class="pr-0 text-right text-dark">New York</td>
+                          </tr>
+                          <tr>
+                            <td class="text-gray-6 pl-0">Phone</td>
+                            <td class="pr-0 text-right text-dark">+1 800 367 4784</td>
+                          </tr>
+                          <tr>
+                            <td class="text-gray-6 pl-0">Email</td>
+                            <td class="pr-0 text-right text-dark">mail@google.com</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="text-dark font-size-18 font-weight-bold mb-1">Income Progress</div>
+                      <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                      <div class="font-weight-bold font-size-36 text-dark mb-2">$390,012.01</div>
+                      <div class="d-flex align-items-center">
+                        <div class="air__c6__progressIcon bg-gray-4 text-white mr-3">
+                          <i class="fe fe-menu font-size-18"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                          <div class="text-dark font-size-18 font-weight-bold text-nowrap mb-2">
+                            78% from $500,000.00
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 70%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="air__c6__chart height-200"></div>
+
+                    <script>
+                        /////////////////////////////////////////////////////////////////////////////////////////
+                        // "widgets charts" module scripts
+
+                        ; (function ($) {
+                          'use strict'
+                          $(function () {
+                            /////////////////////////////////////////////////////////////////////////////////////////
+                            new Chartist.Line(
+                              '.air__c6__chart',
+                              {
+                                series: [
+                                  {
+                                    className: 'ct-series-h',
+                                    data: [4, 6, 4, 3, 5, 7, 8, 7],
+                                  },
+                                ],
+                              },
+                              {
+                                low: 0,
+                                chartPadding: {
+                                  right: 0,
+                                  left: 0,
+                                  top: 5,
+                                  bottom: 0,
+                                },
+                                fullWidth: true,
+                                showPoint: false,
+                                lineSmooth: false,
+                                axisY: {
+                                  showGrid: false,
+                                  showLabel: false,
+                                  offset: 0,
+                                },
+                                axisX: {
+                                  showGrid: false,
+                                  showLabel: false,
+                                  offset: 0,
+                                },
+                                showArea: true,
+                              },
+                            )
+                            /////////////////////////////////////////////////////////////////////////////////////////
+                          })
+                        })(jQuery)
+                    </script>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-nowrap align-items-center pb-4">
+                        <div class="mr-auto">
+                          <div class="text-uppercase font-weight-bold font-size-24 text-dark">US 4658-1678-7528</div>
+                          <div class="font-size-18">$122,059.52</div>
+                        </div>
+                        <div class="ml-1">
+                          <i class="fe fe-star font-size-40"></i>
+                        </div>
+                      </div>
+                      <div class="air__g5__footer text-center text-gray-4 pt-3">
+                        This month loss: $3,647.04
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="air__l3">
+                        <ul class="list-unstyled">
+                          <li class="air__l3__item">
+                            <a href="javascript: void(0);" class="air__l3__itemLink">
+                              <div class="air__l3__itemMeta font-weight-bold text-danger">
+                                2:28<br />
+                                PM
+                              </div>
+                              <div class="mr-3">
+                                <div>Payment Received</div>
+                                <div class="text-muted">Mary has approved your quote.</div>
+                              </div>
+                              <div class="air__l3__itemAction">
+                                <span></span>
+                                <span></span>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="air__l3__item">
+                            <a href="javascript: void(0);" class="air__l3__itemLink">
+                              <div class="air__l3__itemMeta font-weight-bold text-blue">
+                                1:02<br />
+                                AM
+                              </div>
+                              <div class="mr-3">
+                                <div>Account Activated</div>
+                                <div class="text-muted">Mary has approved your quote.</div>
+                              </div>
+                              <div class="air__l3__itemAction">
+                                <span></span>
+                                <span></span>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="air__l3__item">
+                            <a href="javascript: void(0);" class="air__l3__itemLink">
+                              <div class="air__l3__itemMeta font-weight-bold">
+                                2:28<br />
+                                PM
+                              </div>
+                              <div class="mr-3">
+                                <div>Payment Received</div>
+                                <div class="text-muted">Mary has approved your quote.</div>
+                              </div>
+                              <div class="air__l3__itemAction">
+                                <span></span>
+                                <span></span>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="air__l3__item">
+                            <a href="javascript: void(0);" class="air__l3__itemLink">
+                              <div class="air__l3__itemMeta font-weight-bold">
+                                2:28<br />
+                                PM
+                              </div>
+                              <div class="mr-3">
+                                <div>Payment Received</div>
+                                <div class="text-muted">Mary has approved your quote.</div>
+                              </div>
+                              <div class="air__l3__itemAction">
+                                <span></span>
+                                <span></span>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="air__l3__item">
+                            <a href="javascript: void(0);" class="air__l3__itemLink">
+                              <div class="air__l3__itemMeta font-weight-bold">
+                                2:28<br />
+                                PM
+                              </div>
+                              <div class="mr-3">
+                                <div>Payment Received</div>
+                                <div class="text-muted">Mary has approved your quote.</div>
+                              </div>
+                              <div class="air__l3__itemAction">
+                                <span></span>
+                                <span></span>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="air__l3__item">
+                            <a href="javascript: void(0);" class="air__l3__itemLink">
+                              <div class="air__l3__itemMeta font-weight-bold">
+                                2:28<br />
+                                PM
+                              </div>
+                              <div class="mr-3">
+                                <div>Payment Received</div>
+                                <div class="text-muted">Mary has approved your quote.</div>
+                              </div>
+                              <div class="air__l3__itemAction">
+                                <span></span>
+                                <span></span>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex mb-1">
+                        <div class="text-dark text-uppercase font-weight-bold mr-auto">
+                          New users
+                        </div>
+                        <div class="text-gray-6">
+                          +60% Goal Reached
+                        </div>
+                      </div>
+                      <div class="d-flex mb-2">
+                        <div class="text-success font-size-24 font-weight-bold mr-auto">+3,125</div>
+                        <div class="text-gray-4 font-size-24">5,000</div>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-success" style="width: 60%" role="progressbar" aria-valuenow="60"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="text-dark font-size-18 font-weight-bold mb-1">Year Profit</div>
+                      <div class="text-gray-6 mb-2">Revenue by location and date</div>
+                      <div class="air__c5__chart height-200"></div>
+
+                      <script>
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                          // "widgets charts" module scripts
+
+                          ; (function ($) {
+                            'use strict'
+                            $(function () {
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                              new Chartist.Bar(
+                                '.air__c5__chart',
+                                {
+                                  series: [
+                                    {
+                                      className: 'ct-series-b',
+                                      data: [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8, 6, 7],
+                                    },
+                                    {
+                                      className: 'ct-series-m',
+                                      data: [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4, 3, 9],
+                                    },
+                                  ],
+                                },
+                                {
+                                  stackBars: true,
+                                  fullWidth: true,
+                                  chartPadding: {
+                                    right: 0,
+                                    left: 0,
+                                    top: 5,
+                                    bottom: 0,
+                                  },
+                                  low: 0,
+                                  axisY: {
+                                    showGrid: false,
+                                    showLabel: false,
+                                    offset: 0,
+                                  },
+                                  axisX: {
+                                    showGrid: false,
+                                    showLabel: false,
+                                    offset: 0,
+                                  },
+                                  seriesBarDistance: 5,
+                                },
+                              )
+
+                              /////////////////////////////////////////////////////////////////////////////////////////
+                            })
+                          })(jQuery)
+                      </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="text-dark mb-0">Cryptocurrencies</h5>
+                </div>
+                <div class="card-body">
+                  <div class="air__l6">
+                    <ul class="list-unstyled">
+                      <li class="air__l6__item">
+                        <div class="air__l6__itemPic">
+                          <i>B</i>
+                        </div>
+                        <div class="mr-2">
+                          <div>
+                            <strong class="text-dark">Bitcoin</strong>
+                          </div>
+                          <div class="text-muted">Deposited</div>
+                        </div>
+                        <div class="ml-auto text-right text-nowrap">
+                          <div>+0.005 BTC</div>
+                          <div class="text-success">+187.89$</div>
+                        </div>
+                      </li>
+                      <li class="air__l6__item">
+                        <div class="air__l6__itemPic">
+                          <i>L</i>
+                        </div>
+                        <div class="mr-2">
+                          <div>
+                            <strong class="text-dark">Litecoin</strong>
+                          </div>
+                          <div class="text-muted">Deposited by PayPal</div>
+                        </div>
+                        <div class="ml-auto text-right text-nowrap">
+                          <div>+2.3657 LTC</div>
+                          <div class="text-success">+187.89$</div>
+                        </div>
+                      </li>
+                      <li class="air__l6__item">
+                        <div class="air__l6__itemPic">
+                          <i>L</i>
+                        </div>
+                        <div class="mr-2">
+                          <div>
+                            <strong class="text-dark">Dash</strong>
+                          </div>
+                          <div class="text-muted">To Dash adress</div>
+                        </div>
+                        <div class="ml-auto text-right text-nowrap">
+                          <div>-2.3657 LTC</div>
+                          <div class="text-danger">-2187.89$</div>
+                        </div>
+                      </li>
+                      <li class="air__l6__item">
+                        <div class="air__l6__itemPic">
+                          <i>B</i>
+                        </div>
+                        <div class="mr-2">
+                          <div>
+                            <strong class="text-dark">Bitcoin</strong>
+                          </div>
+                          <div class="text-muted">Deposited</div>
+                        </div>
+                        <div class="ml-auto text-right text-nowrap">
+                          <div>+0.005 BTC</div>
+                          <div class="text-success">+187.89$</div>
+                        </div>
+                      </li>
+                      <li class="air__l6__item">
+                        <div class="air__l6__itemPic">
+                          <i>L</i>
+                        </div>
+                        <div class="mr-2">
+                          <div>
+                            <strong class="text-dark">Litecoin</strong>
+                          </div>
+                          <div class="text-muted">Deposited by PayPal</div>
+                        </div>
+                        <div class="ml-auto text-right text-nowrap">
+                          <div>+2.3657 LTC</div>
+                          <div class="text-success">+187.89$</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <ul class="list-unstyled">
+                    <li class="air__l15__item">
+                      <a href="#" class="air__l15__itemLink">
+                        <div class="air__l15__itemCover mr-3">
+                          <img src="{% static 'external/airui/components/core/img/content/hands.png' %}" alt="Hands" />
+                        </div>
+                        <div>
+                          <div class="text-blue">New York Times</div>
+                          <div class="font-weight-bold mb-2">Bitcoin Costs $10k+</div>
+                          <div>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry's standard dummy
+                            text ...
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="air__l15__item">
+                      <a href="#" class="air__l15__itemLink">
+                        <div class="air__l15__itemCover mr-3">
+                          <img src="{% static 'external/airui/components/core/img/content/hands.png' %}" alt="Hands" />
+                        </div>
+                        <div>
+                          <div class="text-blue">CNN</div>
+                          <div class="font-weight-bold mb-2">Bitcoin Costs $10k+</div>
+                          <div>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry's standard dummy
+                            text ...
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="air__l15__item">
+                      <a href="#" class="air__l15__itemLink">
+                        <div class="air__l15__itemCover mr-3">
+                          <img src="{% static 'external/airui/components/core/img/content/hands.png' %}" alt="Hands" />
+                        </div>
+                        <div>
+                          <div class="text-blue">English Speakers</div>
+                          <div class="font-weight-bold mb-2">Bitcoin Costs $10k+</div>
+                          <div>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry's standard dummy
+                            text ...
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap mb-3">
+                    <div class="air__c1__item">
+                      <div class="font-size-18 text-dark font-weight-bold">
+                        +$12,367.36 <span class="text-success font-size-12 align-text-top">+25%</span>
+                      </div>
+                      <div class="text-uppercase text-gray-4">Total sales</div>
+                    </div>
+                    <div class="air__c1__item">
+                      <div class="font-size-18 text-dark font-weight-bold">
+                        +$5,367.36 <span class="text-danger font-size-12 align-text-top">-76%</span>
+                      </div>
+                      <div class="text-uppercase text-gray-4">Avg. Per Day</div>
+                    </div>
+                  </div>
+                  <div class="air__c1__chart ct-chart height-300"></div>
+
+                  <script>
+                      /////////////////////////////////////////////////////////////////////////////////////////
+                      // "widgets charts" module scripts
+
+                      ; (function ($) {
+                        'use strict'
+                        $(function () {
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                          new Chartist.Bar(
+                            '.air__c1__chart',
+                            {
+                              series: [
+                                {
+                                  className: 'ct-series-n',
+                                  data: [10, 40, 30, 30, 55, 25],
+                                },
+                                {
+                                  className: 'ct-series-a',
+                                  data: [20, 60, 50, 45, 50, 60],
+                                },
+                              ],
+                            },
+                            {
+                              seriesBarDistance: 10,
+                              horizontalBars: true,
+                              axisY: {
+                                showGrid: false,
+                                showLabel: false,
+                                offset: 0,
+                              },
+                            },
+                          )
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                        })
+                      })(jQuery)
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+              ; (function ($) {
+                'use strict'
+                $(function () {
+                  new Chartist.Line(
+                    '.air__cryptoDashboard__weekChart',
+                    {
+                      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                      series: [[2, 4, 7, 25, 5, 28, 31]],
+                    },
+                    {
+                      fullWidth: !0,
+                      chartPadding: {
+                        right: 15,
+                        left: -15,
+                      },
+                      low: 0,
+                      showArea: true,
+                      plugins: [Chartist.plugins.tooltip()],
+                    },
+                  )
+                })
+              })(jQuery)
+          </script>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card air__utils__cardMarked air__utils__cardMarked--primary">
+                <div class="card-header card-header-flex">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h5 class="mb-0">Introduction</h5>
+                  </div>
+                  <div class="ml-auto d-flex flex-column justify-content-center">
+                    <div>
+                      <div class="dropdown d-inline-block">
+                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-noarrow"
+                          data-toggle="dropdown" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" x-placement="bottom-start">
+                          <a class="dropdown-item" href="javascript: void(0)">Action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Another action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript: void(0)">Separated link</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h3 class="text-dark font-size-18 font-weight-bold mb-3">Welcome to Jira</h3>
+                  <p>
+                    New to Jira? Check out the
+                    <a href="javascript: void(0);" class="text-blue">Jira User's Guide.</a>
+                  </p>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+                    a galley of type and scrambled it to make a type specimen book. It has survived not only
+                    five centuries, but also the leap into electronic typesetting, remaining essentially
+                    unchanged.
+                  </p>
+                </div>
+              </div>
+              <div class="card air__utils__cardMarked air__utils__cardMarked--primary">
+                <div class="card-header card-header-flex">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h5 class="mb-0">Revenue</h5>
+                  </div>
+                  <div class="ml-auto d-flex flex-column justify-content-center">
+                    <div>
+                      <div class="dropdown d-inline-block">
+                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-noarrow"
+                          data-toggle="dropdown" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" x-placement="bottom-start">
+                          <a class="dropdown-item" href="javascript: void(0)">Action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Another action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript: void(0)">Separated link</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p class="text-dark font-size-48 font-weight-bold mb-2">
+                    $29,931
+                  </p>
+                  <p class="text-uppercase text-muted mb-3">
+                    Revenue today
+                  </p>
+                  <p class="mb-4">
+                    Lorem ipsum dolor sit amit,consectetur eiusmdd tempory incididunt ut labore et dolore magna elit
+                  </p>
+                  <a href="javascript: void(0);" class="btn btn-outline-primary mb-1">View history</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="air__g6 pt-3">
+                  <div class="air__g6__status bg-danger"></div>
+                  <div class="d-flex flex-nowrap align-items-center pb-3 pl-4 pr-4">
+                    <div class="mr-auto">
+                      <div class="text-uppercase font-weight-bold font-size-24 text-dark">-$1,125</div>
+                      <div class="font-size-18">4512-XXXX-1678-7528</div>
+                    </div>
+                    <div class="ml-1 text-danger">
+                      <i class="fe fe-arrow-right-circle font-size-40"></i>
+                    </div>
+                  </div>
+                  <div class="py-3 bg-gray-1 pl-4">
+                    To DigitalOcean Cloud Hosting, Winnetka, LA
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="air__g6 pt-3">
+                  <div class="air__g6__status bg-success"></div>
+                  <div class="d-flex flex-nowrap align-items-center pb-3 pl-4 pr-4">
+                    <div class="mr-auto">
+                      <div class="text-uppercase font-weight-bold font-size-24 text-dark">+$10,264</div>
+                      <div class="font-size-18">4512-XXXX-1678-7528</div>
+                    </div>
+                    <div class="ml-1 text-success">
+                      <i class="fe fe-arrow-left-circle font-size-40"></i>
+                    </div>
+                  </div>
+                  <div class="py-3 bg-gray-1 pl-4">
+                    From Tesla Cars, Inc
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card air__utils__cardMarked air__utils__cardMarked--primary">
+                <div class="card-header card-header-flex">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h5 class="mb-0">Introduction</h5>
+                  </div>
+                  <div class="ml-auto d-flex flex-column justify-content-center">
+                    <div>
+                      <div class="dropdown d-inline-block">
+                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-noarrow"
+                          data-toggle="dropdown" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" x-placement="bottom-start">
+                          <a class="dropdown-item" href="javascript: void(0)">Action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Another action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript: void(0)">Separated link</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p>
+                    You currently have no <a href="javascript: void(0);" class="text-blue">issues</a> assigned
+                    to you. Enjoy your day!
+                  </p>
+                </div>
+              </div>
+              <div class="card air__utils__cardMarked air__utils__cardMarked--primary">
+                <div class="card-header card-header-flex">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h5 class="mb-0">Activity Stream</h5>
+                  </div>
+                  <div class="ml-auto d-flex flex-column justify-content-center">
+                    <div>
+                      <div class="dropdown d-inline-block">
+                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-noarrow"
+                          data-toggle="dropdown" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" x-placement="bottom-start">
+                          <a class="dropdown-item" href="javascript: void(0)">Action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Another action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript: void(0)">Separated link</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="bg-gray-1 text-gray-6 text-uppercase px-3 py-1 mb-2">
+                      Today - 7 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-gray-6 mb-0">
+                        <tbody>
+                          <tr>
+                            <td>California</td>
+                            <td class="text-right"><strong>+78,366,263.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Texas</td>
+                            <td class="text-right"><strong>+58,165,000.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Wyoming</td>
+                            <td class="text-right"><strong>+26,156,267.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Florida</td>
+                            <td class="text-right"><strong>+18,823,026.00$</strong></td>
+                          </tr>
+                          <tr>
+                            <td>New York</td>
+                            <td class="text-right"><strong>+8,125,642.00$</strong></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="bg-gray-1 text-gray-6 text-uppercase px-3 py-1 mb-2">
+                      6 may 2019
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-muted mb-0">
+                        <tbody>
+                          <tr>
+                            <td>No Items</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card air__utils__cardMarked air__utils__cardMarked--primary">
+                <div class="card-header card-header-flex">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h5 class="mb-0">Statistics</h5>
+                  </div>
+                  <div class="ml-auto d-flex flex-column justify-content-center">
+                    <div>
+                      <div class="dropdown d-inline-block">
+                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-noarrow"
+                          data-toggle="dropdown" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" x-placement="bottom-start">
+                          <a class="dropdown-item" href="javascript: void(0)">Action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Another action</a>
+                          <a class="dropdown-item" href="javascript: void(0)">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript: void(0)">Separated link</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-borderless">
+                      <thead>
+                        <tr>
+                          <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">
+                            Action name
+                          </th>
+                          <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase text-right"
+                            width="50%">
+                            Progress
+                          </th>
+                          <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase text-right">
+                            Value
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>New Users</td>
+                          <td width="50%">
+                            <div class="progress">
+                              <div class="progress-bar bg-success" style="width: 60%" role="progressbar"
+                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                          <td class="font-weight-bold text-right">+3,125</td>
+                        </tr>
+                        <tr>
+                          <td>New Reports</td>
+                          <td width="50%">
+                            <div class="progress">
+                              <div class="progress-bar bg-orange" style="width: 70%" role="progressbar"
+                                aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                          <td class="font-weight-bold text-right">+643</td>
+                        </tr>
+                        <tr>
+                          <td>Quote Submits</td>
+                          <td width="50%">
+                            <div class="progress">
+                              <div class="progress-bar bg-primary" style="width: 50%" role="progressbar"
+                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                          <td class="font-weight-bold text-right">+982</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Your profit
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        Average Weekly Profit
+                      </p>
+                    </div>
+                    <p class="text-success font-weight-bold font-size-24 mb-0">
+                      +29,931
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Orders
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        All Time Orders
+                      </p>
+                    </div>
+                    <p class="text-primary font-weight-bold font-size-24 mb-0">
+                      1,800
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="mr-auto">
+                      <p class="text-uppercase text-dark font-weight-bold mb-1">
+                        Refunds
+                      </p>
+                      <p class="text-gray-5 mb-0">
+                        Averache Weekly Reunds
+                      </p>
+                    </div>
+                    <p class="text-danger font-weight-bold font-size-24 mb-0">
+                      -$8,474
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="text-uppercase text-dark font-weight-bold mb-3">
+                    To Do
+                  </h6>
+                  <p class="mb-3">Welcome to Todoist! Let's get you started with a few tips</p>
+                  <div class="air__helpdesk__todoist dd">
+                    <ol class="dd-list">
+                      <li class="dd-item dd3-item" data-id="13">
+                        <div class="dd-handle dd3-handle"></div>
+                        <div class="dd3-content">
+                          <label class="air__utils__control air__utils__control__checkbox">
+                            <input type="checkbox" />
+                            <span class="air__utils__control__indicator align-text-top"></span>
+                            Level 1
+                          </label>
+                        </div>
+                      </li>
+                      <li class="dd-item dd3-item" data-id="14">
+                        <div class="dd-handle dd3-handle"></div>
+                        <div class="dd3-content">
+                          <label class="air__utils__control air__utils__control__checkbox">
+                            <input type="checkbox" />
+                            <span class="air__utils__control__indicator align-text-top"></span>
+                            Level 1
+                          </label>
+                        </div>
+                      </li>
+                      <li class="dd-item dd3-item" data-id="15">
+                        <div class="dd-handle dd3-handle"></div>
+                        <div class="dd3-content">
+                          Level 1:
+                        </div>
+                        <ol class="dd-list">
+                          <li class="dd-item dd3-item" data-id="16">
+                            <div class="dd-handle dd3-handle"></div>
+                            <div class="dd3-content">
+                              <label class="air__utils__control air__utils__control__checkbox">
+                                <input type="checkbox" />
+                                <span class="air__utils__control__indicator align-text-top"></span>
+                                Level 2
+                              </label>
+                            </div>
+                          </li>
+                          <li class="dd-item dd3-item" data-id="17">
+                            <div class="dd-handle dd3-handle"></div>
+                            <div class="dd3-content">
+                              <label class="air__utils__control air__utils__control__checkbox">
+                                <input type="checkbox" />
+                                <span class="air__utils__control__indicator align-text-top"></span>
+                                Level 2
+                              </label>
+                            </div>
+                          </li>
+                          <li class="dd-item dd3-item" data-id="18">
+                            <div class="dd-handle dd3-handle"></div>
+                            <div class="dd3-content">
+                              <label class="air__utils__control air__utils__control__checkbox">
+                                <input type="checkbox" />
+                                <span class="air__utils__control__indicator align-text-top"></span>
+                                Level 2
+                              </label>
+                            </div>
+                          </li>
+                        </ol>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="text-uppercase text-dark font-weight-bold mb-3">
+                    Recent help requests
+                  </h6>
+                  <div class="table-responsive">
+                    <table class="table table-borderless mb-0">
+                      <tr>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Date</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Title</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Email</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase text-right">
+                          Actions
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>12/06/2019</td>
+                        <td>I found a bug</td>
+                        <td><a href="javascript: void(0);" class="text-blue">mary.harford@gmail.com</a></td>
+                        <td class="text-right">
+                          <button type="button" class="btn btn-outline-success">Resolve</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>05/06/2019</td>
+                        <td>Add a form/questionnalre</td>
+                        <td><a href="javascript: void(0);" class="text-blue">stacy.fisher@hotmail.com</a></td>
+                        <td class="text-right">
+                          <button type="button" class="btn btn-outline-success">Resolve</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>17/05/2019</td>
+                        <td>Create a responsive template</td>
+                        <td><a href="javascript: void(0);" class="text-blue">sessil.keep@mail.ru</a></td>
+                        <td class="text-right">
+                          <button type="button" class="btn btn-outline-success">Resolve</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>13/05/2019</td>
+                        <td>Bug in dashboard</td>
+                        <td><a href="javascript: void(0);" class="text-blue">creed@microsoft.com</a></td>
+                        <td class="text-right">
+                          <button type="button" class="btn btn-outline-success">Resolve</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>17/05/2019</td>
+                        <td>Todoist is not working on mobile</td>
+                        <td><a href="javascript: void(0);" class="text-blue">avraam@gmail.com</a></td>
+                        <td class="text-right">
+                          <button type="button" class="btn btn-outline-success">Resolve</button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="air__utils__textDivider mb-2">
+                    <h4 class="air__utils__textDivider__content font-size-24 font-weight-bold">Active Users</h4>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-borderless table-vertical-middle">
+                      <tr>
+                        <th style="width: 45px;"></th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Action name</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Location</th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase text-right">
+                          Value
+                        </th>
+                        <th class="border-bottom-0 font-weight-normal text-gray-6 text-uppercase">Description</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td style="width: 45px;">
+                          <label class="air__utils__control air__utils__control__checkbox mb-0">
+                            <input type="checkbox" checked="checked" />
+                            <span class="air__utils__control__indicator"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <div>New Users</div>
+                        </td>
+                        <td class="text-blue">
+                          New York
+                        </td>
+                        <td class="font-weight-bold text-right">
+                          +3125
+                        </td>
+                        <td class="text-gray-6">Lorem Ipsum is simply dummy text of the printing...</td>
+                        <td>
+                          <div class="air__utils__avatarGroup">
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/1.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/2.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/3.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/4.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <button class="air__utils__avatarGroupAdd">
+                              <i class="fe fe-plus"></i>
+                            </button>
+                          </div>
+                        </td>
+                        <td class="text-nowrap">
+                          <button type="button" class="btn btn-outline-success mr-2 mb-2">Accept</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 45px;">
+                          <label class="air__utils__control air__utils__control__checkbox mb-0">
+                            <input type="checkbox" checked="checked" />
+                            <span class="air__utils__control__indicator"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <div>New Reports</div>
+                        </td>
+                        <td class="text-blue">
+                          Palo Alto
+                        </td>
+                        <td class="font-weight-bold text-right">
+                          +643
+                        </td>
+                        <td class="text-gray-6">Lorem Ipsum is simply dummy text of the printing...</td>
+                        <td>
+                          <div class="air__utils__avatarGroup">
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/1.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/2.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <button class="air__utils__avatarGroupAdd">
+                              <i class="fe fe-plus"></i>
+                            </button>
+                          </div>
+                        </td>
+                        <td class="text-nowrap">
+                          <button type="button" class="btn btn-outline-success mr-2 mb-2">Accept</button>
+                        </td>
+                      </tr>
+                      <tr style="width: 45px;">
+                        <td>
+                          <label class="air__utils__control air__utils__control__checkbox mb-0">
+                            <input type="checkbox" checked="checked" />
+                            <span class="air__utils__control__indicator"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <div>Quote Submits</div>
+                        </td>
+                        <td class="text-blue">
+                          Las Vegas
+                        </td>
+                        <td class="font-weight-bold text-right">
+                          +982
+                        </td>
+                        <td class="text-gray-6">Lorem Ipsum is simply dummy text of the printing...</td>
+                        <td>
+                          <div class="air__utils__avatarGroup">
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/1.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/2.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <div class="air__utils__avatar air__utils__avatar--rounded">
+                              <img src="{% static 'external/airui/components/core/img/avatars/3.jpg' %}"
+                                alt="Mary Stanform" />
+                            </div>
+                            <button class="air__utils__avatarGroupAdd">
+                              <i class="fe fe-plus"></i>
+                            </button>
+                          </div>
+                        </td>
+                        <td class="text-nowrap">
+                          <button type="button" class="btn btn-outline-success mr-2 mb-2">Accept</button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+              /////////////////////////////////////////////////////////////////////////////////////////
+              // "HELPDESK" module scripts
+
+              ; (function ($) {
+                'use strict'
+                $(function () {
+                  /////////////////////////////////////////////////////////////////////////////////////////
+                  $(document).ready(function () {
+                    $('.air__helpdesk__todoist').nestable()
+                  })
+                  /////////////////////////////////////////////////////////////////////////////////////////
+                })
+              })(jQuery)
+          </script>
+
+          <!-- D3.JS Example -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <div id="streamgraph"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+
+            // set the dimensions and margins of the graph
+            var margin = { top: 20, right: 30, bottom: 0, left: 10 },
+              width = 460 - margin.left - margin.right,
+              height = 400 - margin.top - margin.bottom;
+
+            // append the svg object to the body of the page
+            var svg = d3.select("#streamgraph")
+              .append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+              .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+
+            // Parse the Data
+            d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered_wide.csv", function (data) {
+
+              // List of groups = header of the csv files
+              var keys = data.columns.slice(1)
+
+              // Add X axis
+              var x = d3.scaleLinear()
+                .domain(d3.extent(data, function (d) { return d.year; }))
+                .range([0, width]);
+              svg.append("g")
+                .attr("transform", "translate(0," + height * 0.8 + ")")
+                .call(d3.axisBottom(x).tickSize(-height * .7).tickValues([1900, 1925, 1975, 2000]))
+                .select(".domain").remove()
+              // Customization
+              svg.selectAll(".tick line").attr("stroke", "#b8b8b8")
+
+              // Add X axis label:
+              svg.append("text")
+                .attr("text-anchor", "end")
+                .attr("x", width)
+                .attr("y", height - 30)
+                .text("Time (year)");
+
+              // Add Y axis
+              var y = d3.scaleLinear()
+                .domain([-100000, 100000])
+                .range([height, 0]);
+
+              // color palette
+              var color = d3.scaleOrdinal()
+                .domain(keys)
+                .range(d3.schemeDark2);
+
+              //stack the data?
+              var stackedData = d3.stack()
+                .offset(d3.stackOffsetSilhouette)
+                .keys(keys)
+                (data)
+
+              // create a tooltip
+              var Tooltip = svg
+                .append("text")
+                .attr("x", 0)
+                .attr("y", 0)
+                .style("opacity", 0)
+                .style("font-size", 17)
+
+              // Three function that change the tooltip when user hover / move / leave a cell
+              var mouseover = function (d) {
+                Tooltip.style("opacity", 1)
+                d3.selectAll(".myArea").style("opacity", .2)
+                d3.select(this)
+                  .style("stroke", "black")
+                  .style("opacity", 1)
+              }
+              var mousemove = function (d, i) {
+                grp = keys[i]
+                Tooltip.text(grp)
+              }
+              var mouseleave = function (d) {
+                Tooltip.style("opacity", 0)
+                d3.selectAll(".myArea").style("opacity", 1).style("stroke", "none")
+              }
+
+              // Area generator
+              var area = d3.area()
+                .x(function (d) { return x(d.data.year); })
+                .y0(function (d) { return y(d[0]); })
+                .y1(function (d) { return y(d[1]); })
+
+              // Show the areas
+              svg
+                .selectAll("mylayers")
+                .data(stackedData)
+                .enter()
+                .append("path")
+                .attr("class", "myArea")
+                .style("fill", function (d) { return color(d.key); })
+                .attr("d", area)
+                .on("mouseover", mouseover)
+                .on("mousemove", mousemove)
+                .on("mouseleave", mouseleave)
+
+            })
+          </script>
+        </div>
+      </div>
+{% endblock content %}

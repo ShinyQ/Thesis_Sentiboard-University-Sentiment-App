@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'external/airui/head.html' %}
+</head>
+<body>
+  <div class="air__initialLoading"></div>
+  <div class="air__auth">
+  <div class="pt-5 pb-5 d-flex align-items-end mt-auto ">
+    <div class="air__utils__logo__text text-center">
+      <div class="air__utils__logo__name text-uppercase text-dark font-size-21">TEL-U</div>
+      <div class="air__utils__logo__descr text-uppercase font-size-12 text-gray-6">
+        Dashboard
+      </div>
+    </div>
+  </div>
+  <div class="air__auth__container pl-5 pr-5 pt-5 pb-5 bg-white text-center">
+    <div class="text-dark font-size-30 mb-4">Log In</div>
+    <form method="POST" class="mb-4">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="form-group mb-4">
+        {{ form.username.errors }}
+        <input type="text" name="username" class="form-control" placeholder="Username" />
+      </div>
+      <div class="form-group mb-4">
+        {{ form.password.errors }}
+        <input type="password" name="password" class="form-control" placeholder="Password" />
+      </div>
+      <button type="submit" class="text-center btn btn-success w-100 font-weight-bold font-size-18">
+        Log In
+      </button>
+    </form>
+    <a href="#" class="text-blue font-weight-bold font-size-18">Forgot password?</a>
+  </div>
+  <div class="text-center font-size-18 pt-4 mb-auto">
+    Don't have an account?
+    <a href="{% url 'auth:register' %}" class="font-weight-bold text-blue text-underlined"><u>Sign Up</u></a>
+  </div>
+  <div class="mt-auto pb-5 pt-5">
+    <ul class="air__auth__footerNav list-unstyled d-flex mb-2 flex-wrap justify-content-center">
+    <div class="text-gray-4 text-center">© 2021 Tel-U Dashboard. All rights reserved.</div>
+  </div>
+</div>
+</body>
+</html>

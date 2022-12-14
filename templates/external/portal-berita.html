@@ -1,0 +1,276 @@
+{% extends "includes/dashboard-base.html" %}
+{% load static %}
+
+{% block content %}
+<script src="https://d3js.org/d3.v4.js"></script>
+<div class="air__layout__content">
+  <div class="air__utils__content">
+    <div class="air__utils__heading">
+      <h5>Dashboard Portal Berita</h5>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-4">
+          <strong>Tabel Data Portal Berita</strong>
+        </h4>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mb-5">
+              <table class="table table-hover nowrap" id="example1">
+                <thead>
+                  <tr>
+                    <th>Judul</th>
+                    <th>Kategori</th>
+                    <th>Penulis</th>
+                    <th>Tanggal</th>
+                    <th>Artikel</th>
+                    <th>Scrape Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for prt in data %}
+                  <tr>
+                    <td>{{ prt.title }}</td>
+                    <td>{{ prt.category }}</td>
+                    <td>{{ prt.author }}</td>
+                    <td>{{ prt.date }}</td>
+                    <td>{{ prt.article }}</td>
+                    <td>{{ prt.scrape_time }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-4">
+          <strong>Root Cause Analysis</strong>
+        </h4>
+        <div id="hst"></div>
+    <script>
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 30, bottom: 30, left: 40},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#hst")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// get the data
+d3.json("{% static 'data/json/hst.json' %}", function(data) {
+
+  // X axis: scale and draw:
+  var x = d3.scaleLinear()
+      .domain([0, 1000])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+      .range([0, width]);
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // set the parameters for the histogram
+  var histogram = d3.histogram()
+      .value(function(d) { return d.price; })   // I need to give the vector of value
+      .domain(x.domain())  // then the domain of the graphic
+      .thresholds(x.ticks(70)); // then the numbers of bins
+
+  // And apply this function to data to get the bins
+  var bins = histogram(data);
+
+  // Y axis: scale and draw:
+  var y = d3.scaleLinear()
+      .range([height, 0]);
+      y.domain([0, d3.max(bins, function(d) { return d.length; })]);   // d3.hist has to be called before the Y axis obviously
+  svg.append("g")
+      .call(d3.axisLeft(y));
+
+  // append the bar rectangles to the svg element
+  svg.selectAll("rect")
+      .data(bins)
+      .enter()
+      .append("rect")
+        .attr("x", 1)
+        .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+        .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+        .attr("height", function(d) { return height - y(d.length); })
+        .style("fill", "#69b3a2")
+});
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    $("#example1").DataTable({
+      responsive: true,
+      // autoWidth: true,
+      // scrollX: true,
+      // fixedColumns: true,
+    });
+  })
+</script>
+      </div>
+    </div>
+
+   <div class="card">
+      <div class="card-body">
+        <h4 class="mb-4">
+          <strong>Root Cause Analysis</strong>
+        </h4>
+        <div id="sct"></div>
+
+        <script>
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 30, bottom: 30, left: 60},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var sct = d3.select("#sct")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+//Read the data
+d3.json("{% static 'data/json/sct.json' %}",
+
+  function(data) {
+    // Add X axis --> it is a date format
+    var x = d3.scaleTime()
+      .domain(d3.extent(data, function(d) { return d.date; }))
+      .range([ 0, width ]);
+    sct.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+    // Add Y axis
+    var y = d3.scaleLinear()
+      .domain( [8000, 9200])
+      .range([ height, 0 ]);
+    sct.append("g")
+      .call(d3.axisLeft(y));
+    // Add the line
+    sct.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "#69b3a2")
+      .attr("stroke-width", 1.5)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d.value) })
+        )
+    // Add the points
+    sct
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d.value) } )
+        .attr("r", 5)
+        .attr("fill", "#69b3a2")
+})
+</script>
+      </div>
+   </div>
+
+  <div class="card">
+      <div class="card-body">
+        <h4 class="mb-4">
+          <strong>Relationship Extraction</strong>
+        </h4>
+        <div class="task relex highlighted" id="relex">
+			<div class="hairline"></div>
+			  <div class="title">
+				  <a href="#relex">
+					<svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" class="svg-link">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/link.svg#icon-link">
+                        <svg id="icon-link" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                        </svg>
+                      </use>
+					</svg>
+				  </a>
+              </div>
+
+			  <div class="container-wrapper">
+				<svg class="svg-container" width="1139" height="40">
+                  <defs>
+                    <marker id="marker-relex-art" viewBox="0 0 10 10" refX="6" refY="6" markerWidth="6" markerHeight="6" orient="20">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4286f4"></path>
+                    </marker>
+                    <marker id="marker-relex-gen-aff" viewBox="0 0 10 10" refX="6" refY="6" markerWidth="6" markerHeight="6" orient="20">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4df441"></path>
+                    </marker>
+                    <marker id="marker-relex-org-aff" viewBox="0 0 10 10" refX="6" refY="6" markerWidth="6" markerHeight="6" orient="20">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#cc2486"></path>
+                    </marker>
+                    <marker id="marker-relex-part-whole" viewBox="0 0 10 10" refX="6" refY="6" markerWidth="6" markerHeight="6" orient="20">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#222526"></path>
+                    </marker>
+                    <marker id="marker-relex-per-soc" viewBox="0 0 10 10" refX="6" refY="6" markerWidth="6" markerHeight="6" orient="20">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9924cc"></path>
+                    </marker>
+                    <marker id="marker-relex-phys" viewBox="0 0 10 10" refX="6" refY="6" markerWidth="6" markerHeight="6" orient="20">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1ca02c"></path>
+                    </marker>
+                  </defs>
+
+                  <g class="displacy-arrow relex-phys">
+                    <path class="displacy-arc" d="M57.6171875,26 C57.6171875,16 430.3359375,16 430.3359375,26" stroke-width="1px" fill="none" stroke="currentColor" id="arrow-l3tahsdy" marker-end="url(#marker-relex-phys)"></path>
+                    <text dy="-0.3em">
+                      <textPath class="displacy-label" startOffset="50%" fill="currentColor" text-anchor="middle" xlink:href="#arrow-l3tahsdy">PHYS</textPath>
+                    </text>
+                  </g>
+                  <g class="displacy-arrow relex-phys">
+                    <path class="displacy-arc" d="M430.3359375,26 C430.3359375,16 555.1015625,16 555.1015625,26" stroke-width="1px" fill="none" stroke="currentColor" id="arrow-8wz2gb94" marker-start="url(#marker-relex-phys)"></path>
+                    <text dy="-0.3em">
+                      <textPath class="displacy-label" startOffset="50%" fill="currentColor" text-anchor="middle" xlink:href="#arrow-8wz2gb94">PHYS</textPath>
+                    </text>
+                  </g>
+                  <g class="displacy-arrow relex-phys">
+                    <path class="displacy-arc" d="M555.1015625,26 C555.1015625,16 740.8828125,16 740.8828125,26" stroke-width="1px" fill="none" stroke="currentColor" id="arrow-t68zgjav" marker-end="url(#marker-relex-phys)"></path>
+                    <text dy="-0.3em">
+                      <textPath class="displacy-label" startOffset="50%" fill="currentColor" text-anchor="middle" xlink:href="#arrow-t68zgjav">PHYS</textPath>
+                    </text>
+                  </g>
+                  <g class="displacy-arrow relex-part-whole">
+                    <path class="displacy-arc" d="M740.8828125,26 C740.8828125,16 850.78125,16 850.78125,26" stroke-width="1px" fill="none" stroke="currentColor" id="arrow-lg2ifrog" marker-end="url(#marker-relex-part-whole)"></path>
+                    <text dy="-0.3em">
+                      <textPath class="displacy-label" startOffset="50%" fill="currentColor" text-anchor="middle" xlink:href="#arrow-lg2ifrog">PART-WHOLE</textPath></text>
+                  </g>
+                </svg>
+                <div class="container">
+                  <div class="text">
+                    <mark data-entity="subj" data-index="0-4">Mark<span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">subj</span></mark> is from Seattle. But housing is so expensive in
+                    <mark data-entity="obj" data-index="53-66">
+                      <mark data-entity="obj" data-index="53-66">San Francisco<span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">obj</span></mark>
+                    </mark> that
+                    <mark data-entity="subj" data-index="72-74">
+                      <mark data-entity="subj" data-index="72-74">he<span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">subj</span></mark>
+                    </mark> used to sleep in
+                    <mark data-entity="obj" data-index="92-102">
+                      <mark data-entity="subj" data-index="92-102">the garage<span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">obj</span></mark>
+                    </mark> of
+                    <mark data-entity="obj" data-index="106-113">a house<span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">obj</span></mark>.
+                  </div>
+                </div>
+			  </div>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

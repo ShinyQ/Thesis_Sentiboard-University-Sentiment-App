@@ -1,0 +1,147 @@
+/*  JQUERY STEPS */
+.wizard > .content {
+    background: #fff !important;
+}
+
+.wizard > .content > .body input.form-control {
+    font-family: 'Nunito Sans', sans-serif;
+    border-color: #dde2ec;
+}
+
+.wizard > .content > .body input.form-control:hover {
+    border-color: #1b55e3;
+}
+
+.wizard-steps-icon,
+.wizard .number {
+    border: 3px solid #1b55e3;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    width: 3rem;
+    height: 3rem;
+    display: inline-block;
+    text-align: center;
+    line-height: 2.8rem;
+    color: #1b55e3;
+    font-size: 1.6rem;
+    background: #fff;
+}
+
+.wizard-steps-title {
+    display: block;
+}
+
+.wizard .steps ul {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+}
+
+.wizard .steps ul li {
+    -webkit-box-flex: 200;
+    -webkit-flex-grow: 200;
+        -ms-flex-positive: 200;
+            flex-grow: 200;
+    margin-bottom: 0.66rem;
+    float: none;
+    width: auto;
+    position: relative;
+}
+
+.wizard .steps ul li a {
+    background: transparent !important;
+    margin: 0 !important;
+    text-align: center;
+    color: #161537 !important;
+    line-height: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.wizard .steps ul li a .number {
+    display: none;
+}
+
+.wizard .steps ul li:before, .wizard .steps ul li:after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 50%;
+    top: 2.4rem;
+    right: 0;
+    height: 0.2rem;
+    background: #1b55e3;
+    z-index: 1;
+}
+
+.wizard .steps ul li:after {
+    right: auto;
+    left: 0;
+}
+
+.wizard .steps ul li:first-child:after {
+    display: none;
+}
+
+.wizard .steps ul li:last-child:before {
+    display: none;
+}
+
+.wizard .steps ul li.disabled:before, .wizard .steps ul li.disabled:after {
+    background: #dde2ec;
+}
+
+.wizard .steps ul li.disabled .wizard-steps-icon,
+.wizard .steps ul li.disabled .number {
+    border-color: #dde2ec;
+    background: #dde2ec;
+    color: #fff;
+}
+
+.wizard .steps ul li.disabled a {
+    color: #dde2ec !important;
+}
+
+.wizard .actions {
+    text-align: center;
+}
+
+.wizard .actions li {
+    margin-left: 0 !important;
+}
+
+.wizard .actions li a {
+    background-color: #1b55e3;
+    border-color: #1b55e3;
+    min-width: 8rem;
+    text-align: center;
+}
+
+.wizard .actions li a:hover, .wizard .actions li a:active {
+    background-color: #d5d2e7;
+    border-color: #d5d2e7;
+}
+
+.wizard .actions li.disabled a {
+    background-color: #dde2ec !important;
+    border-color: #dde2ec !important;
+    color: #fff !important;
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.wizard-numbers .number {
+    padding-left: 3px;
+}
+
+.wizard-numbers .steps ul li a .number {
+    display: inline-block !important;
+    line-height: 2.8rem;
+}

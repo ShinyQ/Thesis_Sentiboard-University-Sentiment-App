@@ -1,0 +1,66 @@
+/* WIDGET CHART */
+.air__c1__item {
+    -webkit-flex-basis: 50%;
+        -ms-flex-preferred-size: 50%;
+            flex-basis: 50%;
+}
+
+.air__c5__chart .ct-bar {
+    stroke-width: 15px;
+}
+
+.air__c6__progressIcon {
+    width: 3.33rem;
+    height: 3.33rem;
+    text-align: center;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    overflow: hidden;
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+}
+
+.air__c6__progressIcon i {
+    vertical-align: middle;
+    line-height: 3.33rem;
+}
+
+.air__c7__mapContainer {
+    max-width: 26.66rem;
+    margin: 0 auto;
+}
+
+.air__c8__chartist {
+    display: inline-block;
+    height: 3.33rem;
+    width: 7.33rem;
+}
+
+.air__c9__chartTooltip {
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    pointer-events: none;
+    -webkit-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.air__c10__chartTooltip {
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    pointer-events: none;
+    -webkit-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}

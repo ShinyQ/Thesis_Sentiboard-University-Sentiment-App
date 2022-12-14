@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'includes/head.html' %}
+</head>
+  <body class="air__menu--gray">
+  <div class="air__initialLoading"></div>
+  <div class="air__layout air__layout--hasSider">
+    {% include 'includes/sidebar.html' %}
+    <div class="air__layout">
+      
+      {% block content %}
+      {% endblock content %}
+
+      {% include 'includes/footer.html' %}
+    </div>
+  </div>
+</body>
+</html>

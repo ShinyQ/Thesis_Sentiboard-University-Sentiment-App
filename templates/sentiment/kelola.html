@@ -1,0 +1,224 @@
+{% extends "includes/dashboard-base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  .air__utils__content {
+    padding: 2rem!important;
+    max-width: 90rem!important;
+  } 
+
+  .table tbody tr td {
+    font-size: 16px!important;
+    text-align: justify;
+  }
+
+  .swal2-styled.swal2-confirm{
+    background-color: #1b55e3;
+    border-color: #1b55e3;
+  }
+
+  div.dt-buttons > .filter-button {
+    float: right;
+  }
+
+  .dt-buttons{
+    margin-bottom:2%;
+  }
+</style>
+
+<div class="air__layout__content">
+  <div class="air__utils__content">
+    <div class="air__utils__heading">
+      <h3>Halaman Kelola Sentimen</h3>
+    </div>
+        <h4 class="mb-0">Daftar Data Sentimen</h4>
+        <hr>
+        <div class="table-responsive">
+          <table class="table table-hover" id="manage_table">
+            <thead class="thead-dark">
+              <tr>  
+                <th>No</th>
+                <th>Teks</th>
+                <th>Teks Preprocessing</th>
+                <th>Sentimen</th>
+                <th>Tanggal</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for result in results %}
+              <tr>
+                <td>
+                  {{ forloop.counter }}.
+                </td>
+                <td width="30%">
+                  {{ result.text }}
+                </td>
+                <td width='30%'>
+                  {{ result.preprocessing }}
+                </td>
+                <td>
+                  {% if result.label == 2 %}
+                      Negatif
+                  {% elif result.label == 0 %}
+                      Netral   
+                  {% else %}
+                      Positif
+                  {% endif %}
+                </td>
+                <td>
+                     {{ result.created_at }}
+                </td>
+                <td>
+                  <button onclick="hapus({{ result.id }})" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Hapus</button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>   
+  </div>
+</div>
+
+<div class="modal" id="modalFilter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Filter Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>Jenis Label</label>
+        <select class="form-control" name="" id="sentiment">
+          <option value="">Pilih Label</option>
+          <option value="1">Positif</option>
+          <option value="0">Netral</option>
+          <option value="2">Negatif</option>
+        </select>
+
+        <label class="mt-2">Rentang Tanggal</label>
+        <div class="row">
+          <div class="col-md-6">
+            <input class="form-control mt-1" type="date" name="start_date" id="start_date">
+          </div>
+          <div class="col-md-6">
+            <input class="form-control mt-1" type="date" name="end_date" id="end_date">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="redirect_reset()" type="button" class="btn btn-outline-warning" data-dismiss="modal">Reset</button>
+        <button onclick="redirect()" name="sentiment-filter" type="button" class="btn btn-primary">Terapkan Filter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function redirect(){
+    const start_date = $("#start_date").val()
+    const end_date = $("#end_date").val()
+    const sentiment = $('#sentiment option:selected').val()
+
+    let url = window.location.origin + '/sentiment/manage' + '?start_date=' + start_date + '&end_date=' + end_date + '&label=' + sentiment
+
+    window.location = url
+  }
+
+  function redirect_reset(){
+    window.location = window.location.origin + '/sentiment/manage'
+  }
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  
+  start_date.value = urlParams.get('start_date')
+  end_date.value = urlParams.get('end_date')
+
+  start_date.max = new Date().toISOString().split("T")[0];
+  end_date.max = new Date().toISOString().split("T")[0];
+
+  if(urlParams.get('label')){
+    $("#sentiment option[value="+ urlParams.get('label') +"]").attr("selected","selected")
+  }
+
+  $(function () {
+      $("#manage_table").DataTable({
+        responsive: true,
+        dom: 'Blfrtip',
+        buttons: [
+          { 
+            extend: 'pdf', 
+            text: '<i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Export PDF', 
+            className: 'btn btn-primary mr-2',
+            exportOptions: {
+              columns: [0,1,2,3,4]
+            } 
+          },
+          { 
+            extend: 'excel', 
+            text: '<i class="fa fa-file-excel-o" aria-hidden="true"></i> &nbsp; Export Excel', 
+            className: 'btn btn-primary mr-2',
+            exportOptions: {
+              columns: [0,1,2,3,4]
+            } 
+          },
+          { 
+            extend: 'csv', 
+            text: '<i class="fa fa-file-text-o" aria-hidden="true"></i> &nbsp; Export CSV', 
+            className: 'btn btn-primary mr-2',
+            exportOptions: {
+              columns: [0,1,2,3,4]
+            } 
+          },
+          {
+            text: '<i class="fa fa-filter" aria-hidden="true"></i> Filter Data',
+            className: 'btn btn-outline-primary filter-button',
+            action: function () {
+              $("#modalFilter").modal('show');
+            }
+          }
+        ]
+      });
+    });
+  (jQuery);
+
+  function hapus(id){
+    Swal.fire({
+      title: 'Apakah anda yakin ingin menghapus data tersebut?',
+      showCancelButton: true,
+      confirmButtonText: 'Ya, hapus',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if(result.isConfirmed){
+        $.ajax({
+          type: 'DELETE',
+          dataType: 'json',
+          url: "/sentiment/delete_sentiment",
+          data: JSON.stringify({'id': id}),
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
+          },
+          success: function (response) {
+            Swal.fire({
+              title: 'Sukses Menghapus Data',
+              showConfirmButton: false,
+              icon: 'success'
+            })
+
+            setTimeout(function(){
+              window.location.reload();
+            }, 2000);
+          },
+          error: function (response) {
+              console.log(response)
+          }
+        })
+      }
+    })
+  }   
+</script>
+{% endblock content %}

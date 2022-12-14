@@ -1,0 +1,445 @@
+{% extends "includes/dashboard-base.html" %}
+{% load static %}
+
+{% block content %}
+ <!-- Load d3-cloud -->
+<script src="{% static 'common/d3.min.js' %}"></script>
+<script src="{% static 'common/cloud.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<div class="air__layout__content container">
+  <div class="air__utils__content">
+    <div class="air__utils__heading row">
+      <h5 class="col">Dashboard Twitter</h5>
+      <div class="dropdown col text-right">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select Data
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button onclick="data('tw1-2022')" class="dropdown-item" type="button">Triwulan 1 - 2022</button>
+          <button onclick="data('tw4-2021')" class="dropdown-item" type="button">Triwulan 4 - 2021</button>
+          <button onclick="data('tw3-2021')" class="dropdown-item" type="button">Triwulan 3 - 2021</button>
+          <button onclick="data('tw2-2021')" class="dropdown-item" type="button">Triwulan 2 - 2021</button>
+          <button onclick="data('tw1-2021')" class="dropdown-item" type="button">Triwulan 1 - 2021</button>
+        </div>
+        <script>
+          let time = ""
+          function data(time) {
+            switch(time) {
+              case 'tw1-2022':
+                document.getElementById("frame_lda_positive").src = "/static/data/html/lda_linkedin-2022-1-positive.html";
+                document.getElementById("sentiment").src = "/static/data/png/sentiment_linkedin_tw1-2022.png";
+                document.getElementById("wordcloud").src = "/static/data/txt/wordcloud-tw1-2022.svg";
+                document.getElementById("wordcloud-caption").innerHTML = "Wordcloud Triwulan 1 Tahun 2022";
+                document.getElementById("caption_sentiment").innerHTML = "Triwulan 1 Tahun 2022";
+                break;
+              case 'tw4-2021':
+                document.getElementById("frame_lda_positive").src = "/static/data/html/lda_instagram-2021-4-positive.html";
+                document.getElementById("sentiment").src = "/static/data/png/sentiment_instagram_tw4-2021.png";
+                document.getElementById("wordcloud").src = "/static/data/txt/wordcloud-tw4-2021.svg";
+                document.getElementById("wordcloud-caption").innerHTML = "Wordcloud Triwulan 4 Tahun 2021";
+                document.getElementById("caption_sentiment").innerHTML = "Triwulan 4 Tahun 2021";
+                break;
+              case 'tw3-2021':
+                document.getElementById("frame_lda_positive").src = "/static/data/html/lda_instagram-2021-4-positive.html";
+                break;
+              case 'tw2-2021':
+                document.getElementById("frame_lda_positive").src = "/static/data/html/lda_instagram-2021-4-positive.html";
+                break;
+              case 'tw1-2021':
+                document.getElementById("frame_lda_positive").src = "/static/data/html/lda_instagram-2021-4-positive.html";
+                break;
+  
+            }
+          }
+        </script>
+      </div>
+    </div>
+   
+
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-4">
+          <strong>Wordcloud</strong>
+          <img class="my-5" id="wordcloud" src="/static/data/txt/wordcloud-tw1-2022.svg";>
+          <p id="wordcloud-caption" class="text-sm-center font-size-18"></p>
+       </h4>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-4">
+        <strong>LDA Positive</strong>
+        <iframe id="frame_lda_positive" class="mt-4" style="overflow: hidden;" height="800" width="100%" src="/static/data/html/lda_instagram-2021-4-positive.html"></iframe>
+        </h4>
+      </div>
+    </div>
+
+    <!-- Load d3-cloud -->
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+    <div class="card">
+      <div class="card-body">
+         <h4 class="mb-4">
+          <strong>Positive and Negative Words</strong>
+        </h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <canvas id="ldapositive"></canvas>
+            <p style="text-align: center;">Positive</p>
+          </div>
+          <div class="col-lg-6">
+            <canvas id="ldanegative"></canvas>
+            <p style="text-align: center;">Negative</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function visualize_lda(element_id,file, posneg){
+        var data_lda = []  
+        $("#"+element_id).ready(function(){
+          $.get(file, function(data){
+            data_lda_pos = data.split("\n")
+            lda_pos_counts = data_lda_pos[0].replace("\r","").split(",")
+            lda_pos_words = data_lda_pos[1].replace("\r","").split(",")
+            data_lda.push(lda_pos_words)
+            data_lda.push(lda_pos_counts)
+  
+            const dataLDA = {
+              labels: data_lda[0],
+              datasets: [{
+                label : "Most 10 common "+posneg+" words",
+                data: data_lda[1],
+                backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)',
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                ],
+                borderWidth: 1
+              }]
+            };
+            const config = {
+              type: 'bar',
+              data: dataLDA,
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              },
+            };
+            const ldaChart = new Chart(
+              document.getElementById(element_id),
+              config
+              );
+            });
+        });
+      }
+      var element_lda_positive = "ldapositive"
+      var element_lda_negative = "ldanegative"
+      var data_tw4_positive = "/static/data/json/linkedin/linkedin_lda_positive-2022-1.csv"
+      var data_tw4_negative = "/static/data/json/linkedin/linkedin_lda_negative-2022-1.csv"
+      
+      visualize_lda(element_lda_positive,data_tw4_positive,"positive")
+      visualize_lda(element_lda_negative,data_tw4_negative,"negative")
+      visualize_lda("barplot_wordcloud",data_tw4_negative,"negative")
+    </script>
+    <div class="card">
+      <div class="card-body">
+         <h4 class="mb-4">
+          <strong>Topic Found by LDA </strong>
+        </h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="table" id="topicpositive">
+              <thead class="text-center">
+                <tr>
+                  <th>
+                    Label
+                  </th>
+                  <th>
+                    Topic Positive
+                  </th>
+                </tr>
+              </thead>
+              <tbody id= "topicpst">
+              <tbody>
+            </table>
+          </div>
+          <div class="col-lg-6">
+            <table class="table" id="topicnegative">
+              <thead class="text-center">
+                <tr>
+                  <th>
+                    Label
+                  </th>
+                  <th>
+                    Topic Negative
+                  </th>
+                </tr>
+              </thead>
+              <tbody id= "topicngtv">
+              <tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function generateTable(table, data, tbody) {
+        for(let elm = 0; elm < data.length; elm++){
+        
+          var y = document.createElement("TR");
+          var qw = document.createElement("TD");
+          
+          var z = document.createElement("TD");
+          var j = document.createElement("TH");
+          
+          qw.innerHTML = elm
+          z.innerHTML = data[elm]
+          y.appendChild(qw);
+          y.appendChild(z);
+          tbody.appendChild(y)
+
+          table.appendChild(tbody);
+        }
+      }
+
+      var found_positive_topic = []
+      var found_negative_topic = []
+      function table_lda(element_id,file){
+        $("#"+element_id).ready(function(){
+          $.get(file, function(data){
+            var data_topic = []  
+            split = data.split("\n")
+            for(let j in split){
+              data_topic.push(split[j].split(","))
+            }
+            for(let step = 1; step < data_topic.length-1; step++){
+              found_positive_topic.push(data_topic[step][0])
+              found_negative_topic.push(data_topic[step][1])
+            } 
+            console.log("found negative", found_negative_topic)
+            let idTable_pst = document.getElementById("topicpositive");
+            let idTable_ngtv = document.getElementById("topicnegative");
+            let tbody_positive = document.getElementById("topicpst");
+            let tbody_negative = document.getElementById("topicngtv");
+            
+            generateTable(idTable_pst, found_positive_topic, tbody_positive);
+            generateTable(idTable_ngtv, found_negative_topic, tbody_negative);
+          });
+        })
+      }
+      var file_topic = "/static/data/json/instagram/instagram_topicfound_2021-4.csv"
+      table_lda("topicpositive",file_topic)
+    </script>
+    <!--card baru-->
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-4">
+          <strong>Sentiment Report</strong>
+        </h4>
+        <div class="row d-flex">
+          <div class="col-6 ">
+            <img class="my-5" id="sentiment" src="/static/data/png/sentiment_instagram_tw4-2021.png">
+            <p class="text-sm-center" id="caption_sentiment">Triwulan 4 Tahun 2021</p>
+          </div>
+          <div class="col-6">
+            <img class="my-5" id="sentiment_barplot" src="/static/data/png/data_tw_2021.png">
+            <p class="text-sm-center">Sentiment Tahun 2021</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <script>
+
+      // set the dimensions and margins of the graph
+      var margin = {top: 10, right: 30, bottom: 20, left: 50},
+          width = 460 - margin.left - margin.right,
+          height = 400 - margin.top - margin.bottom;
+      
+      // append the svg object to the body of the page
+      var svg = d3.select("#sentiment-barplot")
+        .append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+      
+      // Parse the Data
+      d3.csv("https://raw.githubusercontent.com/henritantyoko22/react-native-render-html/master/data_sentiment_2021.csv", function(data) {
+      
+        // List of subgroups = header of the csv files = soil condition here
+        var subgroups = data.columns.slice(1)
+      
+        // List of groups = species here = value of the first column called group -> I show them on the X axis
+        var groups = d3.map(data, function(d){return(d.group)}).keys()
+      
+        // Add X axis
+        var x = d3.scaleBand()
+            .domain(groups)
+            .range([0, width])
+            .padding([0.2])
+        svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x).tickSize(0));
+      
+        // Add Y axis
+        var y = d3.scaleLinear()
+          .domain([0, 500])
+          .range([ height, 0 ]);
+        svg.append("g")
+          .call(d3.axisLeft(y));
+      
+        // Another scale for subgroup position?
+        var xSubgroup = d3.scaleBand()
+          .domain(subgroups)
+          .range([0, x.bandwidth()])
+          .padding([0.05])
+      
+        // color palette = one color per subgroup
+        var color = d3.scaleOrdinal()
+          .domain(subgroups)
+          .range([
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(255, 99, 132)'
+          ])
+      
+        // Show the bars
+        svg.append("g")
+          .selectAll("g")
+          // Enter in data = loop group per group
+          .data(data)
+          .enter()
+          .append("g")
+            .attr("transform", function(d) { return "translate(" + x(d.group) + ",0)"; })
+          .selectAll("rect")
+          .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
+          .enter().append("rect")
+            .attr("x", function(d) { return xSubgroup(d.key); })
+            .attr("y", function(d) { return y(d.value); })
+            .attr("width", xSubgroup.bandwidth())
+            .attr("height", function(d) { return height - y(d.value); })
+            .attr("fill", function(d) { return color(d.key); });
+      
+      })
+      
+    </script>
+    <!--tabel-->
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mb-5">
+              <table class="table table-hover nowrap" id="linkedin_table">
+                <thead>
+                  <tr>
+                    <th>Username : </th>
+                    <th>UserLink : </th>
+                    <th>Post Time : </th>
+                    <th>Post Like(s) : </th>
+                    <th>Description : </th>
+                    <th>Comment Username : </th>
+                    <th>Comment UserLink : </th>
+                    <th>Comment Text : </th>
+                    <th>Comment Like(s) : </th>
+                    <th>Comment Time : </th>
+                    <th>Comment Reply : </th> 
+                  </tr>
+                </thead>
+                <tbody>  
+                  {% for ig in data %}
+                  <tr>
+                    <td>{{ ig.post_username }}</td>
+                    <td>{{ ig.post_userlink }}</td>
+                    <td>{{ ig.post_time }}</td>
+                    <td>{{ ig.post_like }}</td>
+                    <td>{{ ig.post_description }}</td>
+                    <td>{{ ig.comment_user }}</td>
+                    <td> <a href="{{ ig.comment_userlink }}">{{ ig.comment_userlink }}</a></td>
+                    <td>{{ ig.comment_txt }}</td>
+                    <td>{{ ig.comment_like }}</td>
+                    <td>{{ ig.comment_time }}</td>
+                    <td>
+                      {% if ig.reply != 0 %}
+                        <br> 
+                        <p style="white-space: pre; margin: -15px -15px">
+                          {
+                              time reply : {{ ig.reply.scrapper_time_reply }}
+                              username reply: {{ ig.reply.username_reply}},
+                              href reply: <a href="{{ ig.reply.username_reply_link }}">{{ ig.reply.username_reply_link }}</a>, 
+                              comment reply : {{ ig.reply.username_reply_text }},
+                              like reply : {{ ig.reply.like_comment_reply }}, 
+                          }
+                        </p>
+                        <br>
+                      {% else %}
+                        0
+                      {% endif %}
+                    </td>                  
+                  </tr>
+                  {% endfor %}
+                </tbody>  
+              </table>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+    <script type="text/javascript">
+    $(function () {
+          $("#linkedin_table").DataTable({
+            responsive: true,
+          });
+        });
+      (jQuery);  
+    </script>
+
+    {% comment %} <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="mb-4">
+              <strong>Named Entity Recognition (NER)</strong>
+            </h4>
+            <div class="embed-responsive embed-responsive-21by9 border">
+              <iframe class="embed-responsive-item border" src="{% static 'external/graphic/ner.html' %}"></iframe>
+            </div>
+            <p style="text-align: center;">Named Entity Recognition (NER)</p>
+          </div>
+        </div>
+      </div>
+    </div> {% endcomment %}
+
+    {% comment %} <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="mb-4">
+              <strong>Part-of-Speech Tagging (POS)</strong>
+            </h4>
+            <div class="embed-responsive embed-responsive-21by9 border">
+              <iframe class="embed-responsive-item border" src="{% static 'external/graphic/pos.svg' %}"></iframe>
+            </div>
+            <p style="text-align: center;">Part-of-Speech Tagging (POS)</p>
+          </div>
+        </div>
+      </div>
+    </div> {% endcomment %}
+
+</div>
+{% endblock content %}

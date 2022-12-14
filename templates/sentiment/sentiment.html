@@ -1,0 +1,344 @@
+{% extends "includes/dashboard-base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  .air__utils__content {
+    padding: 2rem!important;
+    max-width: 90rem!important;
+  } 
+
+  .table tbody tr td {
+    font-size: 16px!important;
+    text-align: justify;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: 100%;
+  }
+
+  table td, table th {
+    text-align: left;
+    text-align: center;   
+    vertical-align: middle!important;
+  }
+
+  div.dt-buttons > .filter-button {
+    float: right;
+  }
+</style>
+
+<div class="air__layout__content">
+  <div class="air__utils__content">
+    <div class="air__utils__heading">
+      <div class="d-flex justify-content-between">
+        <h5>Dashboard Sentiment</h5>
+        <div>
+          <span class="mr-1">Filter Tanggal :</span>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary mr-1 dropdown-toggle" id="button1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% if filter  %}
+                {{ filter_month }}
+              {% else  %}
+                Bulan
+              {% endif %}
+            </button>
+
+            <div aria-labelledby="button1" class="dropdown-menu dropdown-menu-right">
+                {% for month in months %}
+                  {% if filter_month != month %}
+                    <a href="{{ request.path }}?month={{ month }}&year={{ filter_year }}" class="dropdown-item" type="button">{{ month }}</a>
+                  {% endif %}
+                {% endfor %}
+            </div>
+          </div> 
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary mr-1 dropdown-toggle" id="button2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ filter_year }}
+            </button>
+            <div aria-labelledby="button2" class="dropdown-menu dropdown-menu-right">
+                 {% for year in years %}
+                    {% if filter_year != year %}
+                        {% if filter %}
+                          <a href="{{ request.path }}?month={{ filter_month }}&year={{ year }}" class="dropdown-item" type="button">{{ year }}</a>
+                        {% else %}
+                          <a href="{{ request.path }}?year={{ year }}" class="dropdown-item" type="button">{{ year }}</a>
+                        {% endif %}
+                    {% endif %} 
+                 {% endfor %}
+            </div>
+          </div>
+
+          {% if filter %}
+            <a href="{{ request.path }}" type="button" class="btn btn-outline-danger mr-1">
+              Reset Filter
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card text-white bg-success">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <i style="font-size: 100px!important;" class="fa fa-smile-o"></i>
+              </div>
+              <div class="col-md-6">
+                <div class="ml-auto mt-2">
+                  <p style="font-size: 18px;" class="font-weight-bold mb-0">Sentimen Positif</p>
+                  <p style="font-size: 50px;" class="mb-0 font-weight-bold">{{ positive.count }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <i style="font-size: 100px!important;" class="fa fa-meh-o"></i>
+              </div>
+              <div class="col-md-6">
+                <div class="ml-auto mt-2">
+                  <p style="font-size: 18px;" class="font-weight-bold mb-0">Sentimen Netral</p>
+                  <p style="font-size: 50px;" class="mb-0 font-weight-bold">{{ neutral.count }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-white bg-danger">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <i style="font-size: 100px!important;" class="fa fa-frown-o"></i>
+              </div>
+              <div class="col-md-6">
+                <div class="ml-auto mt-2">
+                  <p style="font-size: 18px;" class="font-weight-bold mb-0">Sentimen Negatif</p>
+                  <p style="font-size: 50px;" class="mb-0 font-weight-bold">{{ negative.count }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <p class="font-weight-bold mb-0">Statistik Total Data Sentimen {{ filter_month|default_if_none:"Tahun" }} {{ filter_year }}</p>
+            <hr>
+            <canvas id="line-sentiment" style="width:100%;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <p class="font-weight-bold mb-0">Presentase Sentimen</p>
+            <hr>
+            <canvas id="pie-chart" width="1000" height="1000"></canvas>  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <p class="font-weight-bold mb-1">Wordcloud Keseluruhan</p>
+            <hr>
+            <img src="{% static '/sentiment/Wordcloud/Word.png' %}" alt="Full Wordcloud" width="100%">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <p class="font-weight-bold mb-1">Wordcloud {{ filter_month|default_if_none:"Tahun" }} {{ filter_year }}</p>
+            <hr>
+            {% if filter_wordcloud_check %}
+              <img src="{% static filter_wordcloud %}" alt="Wordcloud With Monthly Filter" width="100%">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-body">
+        <p class="font-weight-bold mb-0">Contoh Sentimen</p>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <table class="table table-bordered table-height">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Sentimen Positif</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if positive.count == 0 %}
+                  <tr>
+                    <td style="text-align:center">Tidak Ada Data Yang Tersedia</td>
+                  </tr>
+                {% else %}
+                  {% for pos in positive %}
+                    {% if forloop.counter <= 5 %}
+                      <tr>
+                        <td>{{ pos.text }}</td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-md-4">
+            <table class="table table-bordered table-height">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Sentimen Netral</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if neutral.count == 0 %}
+                  <tr>
+                    <td style="text-align:center">Tidak Ada Data Yang Tersedia</td>
+                  </tr>
+                {% else %}
+                  {% for neu in neutral %}
+                    {% if forloop.counter <= 5 %}
+                      <tr>
+                        <td>
+                          {{ neu.text }}
+                        </td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-md-4">
+            <table class="table table-bordered table-height">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Sentimen Negatif</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if negative.count == 0 %}
+                  <tr>
+                    <td style="text-align:center">Tidak Ada Data Yang Tersedia</td>
+                  </tr>
+                {% else %}
+                  {% for neg in negative %}
+                    {% if forloop.counter <= 5 %}
+                      <tr>
+                        <td>
+                          {{ neg.text }}
+                        </td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+<script>
+  var yValues = {{ dates_counter|safe }}
+  var xValues = {{ dates|safe }}
+  
+  new Chart("line-sentiment", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        fill: false,  
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "rgba(0,0,255,0.1)",
+        data: yValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      scales: {
+        yAxes: [{ticks: {min: 1}}],
+      },
+      plugins: {
+        datalabels: {
+          display: false,
+        }
+      }
+    }
+  });
+
+  var data = [{
+    data: [{{ positive.count|safe }}, {{ neutral.count|safe }}, {{ negative.count|safe }}],
+    backgroundColor: [
+      "#46be8a",
+      "#786fa4",
+      "#d21243",
+    ],
+    borderColor: "#fff"
+  }];
+
+  var options = {
+    tooltips: {
+      enabled: false
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, ctx) => {
+          const datapoints = ctx.chart.data.datasets[0].data
+          const total = datapoints.reduce((total, datapoint) => total + datapoint, 0)
+          const percentage = value / total * 100
+          return percentage.toFixed(2) + "%";
+        },
+        color: '#fff',
+      }
+    }
+  };
+
+  var ctx = document.getElementById("pie-chart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+    labels: ['Positif', 'Netral', 'Negatif'],
+      datasets: data
+    },
+    options: options,
+    plugins: [ChartDataLabels],
+  });
+
+  </script>
+{% endblock content %}

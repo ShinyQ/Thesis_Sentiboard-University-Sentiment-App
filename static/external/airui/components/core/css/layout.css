@@ -1,0 +1,93 @@
+/*  "LAYOUT" STYLES */
+.air__layout {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+        -ms-flex: auto;
+            flex: auto;
+    min-height: 100vh;
+    min-width: 0;
+}
+
+.air__layout.air__layout--hasSider {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+}
+
+.air__layout__content {
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+        -ms-flex: auto;
+            flex: auto;
+    min-height: 0;
+}
+
+.air__layout__footer {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+}
+
+.air__layout__header {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+}
+
+.air__layout--fixedHeader .air__layout__header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.air__layout--squaredBorders .card {
+    -webkit-border-radius: 0 !important;
+            border-radius: 0 !important;
+}
+
+.air__layout--appMaxWidth > .air__layout {
+    max-width: 1420px;
+    margin: 0 auto;
+}
+
+.air__layout--contentNoMaxWidth .air__utils__content,
+.air__layout--contentNoMaxWidth .air__footer {
+    max-width: none;
+}
+
+.air__layout--borderless .card {
+    border: none !important;
+}
+
+.air__layout--grayBackground {
+    background: #f2f4f8;
+}
+
+.air__layout--grayTopbar .air__topbar,
+.air__layout--grayTopbar .air__subbar {
+    background: #f2f4f8;
+}
+
+.air__layout--cardsShadow .card {
+    -webkit-box-shadow: 0 4px 10px 0 rgba(22, 21, 55, 0.03), 0 0 10px 0 rgba(22, 21, 55, 0.02);
+            box-shadow: 0 4px 10px 0 rgba(22, 21, 55, 0.03), 0 0 10px 0 rgba(22, 21, 55, 0.02);
+}
+
+.air__layout--cardsShadow .card .card {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}

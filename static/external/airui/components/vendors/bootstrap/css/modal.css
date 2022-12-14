@@ -1,0 +1,16 @@
+/* MODAL */
+.modal .modal-content {
+    border: none;
+}
+
+.modal .modal-header .close {
+    background: #fff;
+}
+
+.modal-backdrop {
+    background: #161537;
+}
+
+.modal-backdrop.show {
+    opacity: 0.3;
+}

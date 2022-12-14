@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'external/airui/head.html' %}
+</head>
+  <body class="air__menu--gray">
+  <div class="air__initialLoading" style="display: block;"></div>
+  <div class="air__layout air__layout--hasSider">
+    {% include 'external/airui/includes/sidebar.html' %}
+    <div class="air__layout">
+      {% include 'external/airui/includes/header.html' %}
+      
+      {% block content %}
+      {% endblock content %}
+
+      {% include 'external/airui/includes/footer.html' %}
+    </div>
+  </div>
+</body>
+</html>

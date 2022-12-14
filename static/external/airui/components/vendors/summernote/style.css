@@ -1,0 +1,105 @@
+/*  TEXT-EDITOR */
+.note-popover {
+    display: none;
+    margin-top: 5px;
+}
+
+.note-editor {
+    border-color: #e4e9f0 !important;
+    -webkit-border-radius: 3px;
+            border-radius: 3px;
+}
+
+.note-editor .note-codable {
+    outline: none;
+    background: #1a1942 !important;
+}
+
+.note-editor .note-resizebar {
+    background: #fff !important;
+    padding: 2px 0 3px !important;
+    height: 12px !important;
+    -webkit-border-radius: 0 0 3px 3px;
+            border-radius: 0 0 3px 3px;
+}
+
+.note-editor .note-statusbar {
+    border-color: #e4e9f0 !important;
+}
+
+.note-editor .panel-heading {
+    padding: 0 5px;
+}
+
+.note-editor .note-btn {
+    background: #f2f4f8;
+    border-color: #f2f4f8;
+    color: #786fa4 !important;
+}
+
+.note-editor .note-btn:hover {
+    background: #dee3ed;
+    border-color: #dee3ed;
+}
+
+.note-editor .note-btn-group .dropdown-menu {
+    padding: 5px 10px;
+}
+
+.note-editor .note-btn-group .dropdown-menu blockquote {
+    padding: 5px 10px;
+}
+
+.note-editor .note-popover .popover-content .note-color .dropdown-menu,
+.note-editor .panel-heading.note-toolbar .note-color .dropdown-menu {
+    min-width: 355px;
+}
+
+.note-editor .note-popover .popover-content .note-para .dropdown-menu,
+.note-editor .panel-heading.note-toolbar .note-para .dropdown-menu {
+    min-width: 230px;
+}
+
+.note-editor .note-popover .popover-content .dropdown-menu,
+.note-editor .panel-heading.note-toolbar .note-fontname .dropdown-menu {
+    min-width: 140px;
+}
+
+.note-editor .note-color-reset {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    -webkit-border-radius: 1px !important;
+            border-radius: 1px !important;
+    background: #c3bedc !important;
+    color: #fff !important;
+}
+
+.note-editor .dropdown-toggle {
+    padding-right: 4px;
+}
+
+.note-editor .dropdown-toggle:after {
+    display: none;
+}
+
+.note-editor .note-recent-color {
+    color: #c3bedc;
+}
+
+.note-editor .note-toolbar {
+    padding: 5px 10px 10px 10px;
+    background: #fff;
+    -webkit-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+    border-bottom: 1px solid #e4e9f0;
+}
+
+.note-editor div.panel-heading {
+    padding: 5px 10px 10px !important;
+    margin-left: 0 !important;
+    height: auto !important;
+}
+
+.note-editor div.panel-body {
+    margin-left: 0 !important;
+}

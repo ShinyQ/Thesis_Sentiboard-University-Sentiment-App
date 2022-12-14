@@ -1,0 +1,28 @@
+/* GITHUB */
+.air__github__discuss__commentEditor {
+    background-color: red;
+}
+
+.air__github__discuss__commentEditor .note-editor {
+    border: none;
+}
+
+.air__github__discuss__commentEditor .note-editor.note-frame .note-editing-area .note-editable {
+    padding: 1rem;
+}
+
+.air__github__discuss__commentEditor .note-style .dropdown-menu.dropdown-style {
+    min-width: 160px;
+}
+
+.air__github__discuss__commentEditor .note-style pre {
+    padding: 0.33rem;
+}
+
+.air__github__discuss__commentEditor .note-style p {
+    margin: 0;
+}
+
+.air__github__discuss__commentEditor .note-color .btn-group {
+    display: inline-block;
+}

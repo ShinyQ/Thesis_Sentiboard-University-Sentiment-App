@@ -1,0 +1,55 @@
+/*  JQUERY TYPEAHED (AUTOCOMPLETE) */
+.typeahead__container {
+    position: relative;
+    color: #46be8a;
+}
+
+.typeahead__container .typeahead__field {
+    position: relative;
+    z-index: 1;
+}
+
+.typeahead__container .typeahead__result {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: -webkit-calc(100% + 2px);
+    top: calc(100% + 2px);
+    width: 100%;
+}
+
+.typeahead__container .typeahead__result .typeahead__list {
+    background: #fff;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    border: 1px solid #dde2ec;
+    -webkit-border-radius: 0 0 3px 3px;
+            border-radius: 0 0 3px 3px;
+}
+
+.typeahead__container .typeahead__result .typeahead__list .typeahead__item a {
+    display: block;
+    padding: 6px 16px;
+    color: #786fa4;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.typeahead__container .typeahead__result .typeahead__list .typeahead__item.active a {
+    background: #c3bedc;
+}
+
+.typeahead__container .typeahead__result .typeahead__list .typeahead__item:hover a {
+    background: #1b55e3;
+    color: #fff;
+}
+
+.typeahead__container .typeahead__result .typeahead__list .typeahead__item strong {
+    font-weight: 600;
+}
+
+.typeahead__container.result .typeahead__result {
+    display: block;
+}

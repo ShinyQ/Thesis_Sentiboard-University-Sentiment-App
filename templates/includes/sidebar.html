@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="air__menuLeft">
+    <div class="air__menuLeft__outer">
+    <div class="air__menuLeft__mobileToggleButton air__menuLeft__mobileActionToggle">
+        <span></span>
+    </div>
+    <div class="air__menuLeft__toggleButton air__menuLeft__actionToggle">
+        <span></span>
+        <span></span>
+    </div>
+    <a href="javascript: void(0);" class="air__menuLeft__logo">
+        <img style="max-width:17px;" src="{% static 'images/telu-logo-300.png' %}" alt="Tel-U logo" />
+        <div style="margin-left:1.96rem;" class="air__menuLeft__logo__name">TEL-U</div>
+        <div style="margin-left:1.96rem;" class="air__menuLeft__logo__descr">Dashboard</div>
+    </a>
+    <a href="javascript: void(0);" class="air__menuLeft__user">
+        <div class="air__menuLeft__user__avatar">
+        <img src="{% static 'external/airui/components/core/img/avatars/avatar.png' %}" alt="David Beckham" />
+        </div>
+        <div class="air__menuLeft__user__name">
+        {{request.user.first_name}}
+        </div>
+        <div class="air__menuLeft__user__role">
+        Administrator
+        </div>
+    </a>
+    <div class="air__menuLeft__container air__customScroll">
+        <ul class="air__menuLeft__list">
+            <li class="air__menuLeft__category">
+                <span>Menu</span>
+            </li>
+
+            <li class="air__menuLeft__item air__menuLeft__submenu">
+                <a href="javascript: void(0)" class="air__menuLeft__link">
+                <i class="fe fe-home air__menuLeft__icon"></i>
+                <span>Sentiment</span>
+                <!-- <span class="badge text-white bg-blue-light float-right mt-1 px-2">6</span> -->
+                </a>
+                <ul class="air__menuLeft__list">
+                    <li class="air__menuLeft__item">
+                        <a href="{% url 'sentiment:dashboard' %}" class="air__menuLeft__link">
+                        <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="air__menuLeft__item">
+                        <a href="{% url 'sentiment:manage' %}" class="air__menuLeft__link">
+                        <span>Kelola Data</span>
+                        </a>
+                    </li>
+                    
+                    <li class="air__menuLeft__item">
+                        <a href="{% url 'sentiment:crawl' %}" class="air__menuLeft__link">
+                        <span>Crawling Data</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            
+        <li class="air__menuLeft__item">
+            <a href="{% url 'auth:logout' %}" class="air__menuLeft__link">
+            <i class="fe fe-file-text air__menuLeft__icon"></i>
+            <span>Logout</span>
+            </a>
+        </li>
+        </ul>
+    </div>
+    </div>
+</div>
+<div class="air__menuLeft__backdrop air__menuLeft__mobileActionToggle"></div>

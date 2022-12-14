@@ -1,0 +1,8 @@
+/* LIST GROUP */
+.list-group-item {
+    border-color: #e4e9f0;
+}
+
+.list-group-item.active {
+    background: #1b55e3;
+}

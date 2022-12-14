@@ -1,0 +1,101 @@
+/* CHAT */
+.air__chat--open .air__chat__container {
+    z-index: 10;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0);
+}
+
+.air__chat {
+    position: fixed;
+    z-index: 1998;
+    bottom: 3rem;
+    right: 2.66rem;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.air__chat__innerContainer {
+    height: 20rem;
+}
+
+@media (max-width: 543px) {
+    .air__chat__innerContainer {
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1;
+    }
+}
+
+.air__chat__container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    z-index: -1;
+    -webkit-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+            transform: translateY(10px);
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    bottom: -webkit-calc(100% + 20px);
+    bottom: calc(100% + 20px);
+    right: 0;
+    background-color: #fff;
+    width: 22rem;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 5px 20px -5px rgba(22, 21, 55, 0.08), 0 5px 20px -5px rgba(22, 21, 55, 0.08);
+            box-shadow: 0 5px 20px -5px rgba(22, 21, 55, 0.08), 0 5px 20px -5px rgba(22, 21, 55, 0.08);
+    padding-left: 1.66rem;
+    padding-right: 1.66rem;
+    padding-top: 1rem;
+    padding-bottom: 0.66rem;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 543px) {
+    .air__chat__container {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.air__chat__container::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 3.46rem;
+    width: 0;
+    height: 0;
+    border-top: 7px solid white;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 0;
+}
+
+@media (max-width: 991px) {
+    .air__chat__container::before {
+        right: 0.66rem;
+    }
+}
+
+.air__chat__toggleButton .fe {
+    position: relative;
+    bottom: -1px;
+}

@@ -1,0 +1,62 @@
+/*  "CORE" STYLES */
+html {
+    font-size: 15px;
+}
+
+@media (max-width: 767px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+body {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #786fa4;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: #786fa4;
+    -webkit-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover, a:active, a:focus {
+    color: #1b55e3;
+    text-decoration: none;
+}
+
+input {
+    outline: none !important;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #786fa4;
+}
+
+button,
+input {
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+textarea {
+    -webkit-appearance: none !important;
+       -moz-appearance: none !important;
+            appearance: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #161537;
+}
