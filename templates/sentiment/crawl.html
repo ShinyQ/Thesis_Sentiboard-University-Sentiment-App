@@ -212,7 +212,13 @@
                 }
             },
             error: function (response) {
-                console.log(response)
+              Swal.close();
+              Swal.fire({
+                title: 'Gagal Melakukan Crawl Data',
+                text: 'Terdapat karakter yang tidak dapat diproses, silahkan mengubah kata kunci pencarian',
+                showConfirmButton: true,
+                icon: 'error'
+              })
             }
         })
           }

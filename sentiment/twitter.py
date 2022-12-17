@@ -12,7 +12,9 @@ def create_url(pagination_token=None, search=None):
     url = f'https://api.twitter.com/2/tweets/search/recent?query={query}&tweet.fields={fields}&max_results={max_result}&next_token={pagination_token}'
     
     if search:
+        search = search.replace('#', '%23')
         search = search.replace(' ', ' OR ')
+
         query = f'lang:id -RT {search} -is:retweet'
 
     if pagination_token == None:

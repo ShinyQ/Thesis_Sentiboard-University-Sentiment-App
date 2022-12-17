@@ -22,9 +22,7 @@ import logging
 import json
 import re
 import os
-import logging
 
-logging.disable(logging.INFO)
 plt.switch_backend('Agg') 
 
 db_logger = logging.getLogger('db')

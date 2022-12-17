@@ -23,4 +23,4 @@ Manual Installation:
 - Install Requirements (pip install -r requirements.txt)
 
 ## **Running Application**
-- Manual : `python3 runserver manage.py localhost:9000`
+- Manual : `python3 manage.py runserver localhost:9000`
