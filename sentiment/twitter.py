@@ -99,7 +99,7 @@ def get_tweets(query):
                 json_response, tweets = get_data(tweets, query, next_token)
                 break
 
-            if (len(tweets) >= 200):
+            if (len(tweets) >= 100):
                 break
             
             time.sleep(5)
