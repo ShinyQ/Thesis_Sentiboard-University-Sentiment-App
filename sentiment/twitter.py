@@ -6,7 +6,7 @@ from datetime import datetime, date
 bearer_token = "AAAAAAAAAAAAAAAAAAAAAM01KwEAAAAAG%2BCXwrqH9tqlzgJfhaX5zHKUl3M%3DyKnVr7Yon9T3E5EoidlYDtBVaypIeEVl9l4mghYoUd9hVOLUIr"
 
 def create_url(pagination_token=None, search=None):
-    max_result = 100
+    max_result = 50
     fields = 'in_reply_to_user_id,author_id,created_at,conversation_id'
     query = "lang:id -RT telkomuniversity OR universitastelkom OR telkom university -is:retweet"
     url = f'https://api.twitter.com/2/tweets/search/recent?query={query}&tweet.fields={fields}&max_results={max_result}&next_token={pagination_token}'
@@ -99,7 +99,7 @@ def get_tweets(query):
                 json_response, tweets = get_data(tweets, query, next_token)
                 break
 
-            if (len(tweets) >= 100):
+            if (len(tweets) >= 50):
                 break
             
             time.sleep(5)
