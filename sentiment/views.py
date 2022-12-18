@@ -26,7 +26,6 @@ import os
 plt.switch_backend('Agg') 
 
 db_logger = logging.getLogger('db')
-file_exists = exists(f'{os.path.join(os.path.dirname(__file__))}/IndoBERT/pytorch_model.bin')
 
 classifier = AutoModelForSequenceClassification.from_pretrained('ShinyQ/Sentiboard')
 tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p2")
