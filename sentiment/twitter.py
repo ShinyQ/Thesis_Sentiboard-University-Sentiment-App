@@ -102,7 +102,7 @@ def get_tweets(query):
             if (len(tweets) >= 50):
                 break
             
-            time.sleep(5)
+            time.sleep(1)
 
     return tweets
     
