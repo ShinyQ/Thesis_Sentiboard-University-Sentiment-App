@@ -61,8 +61,8 @@ def get_data(tweets, query, next_token=None):
     if results:
         for res in results:
             created_at = date.today()
-
-            if res.get('created'):
+    
+            if res.get('created_at'):
                created_at = datetime.strptime(res['created_at'], "%Y-%m-%dT%H:%M:%S.%fZ")
 
             month = datetime.strftime(created_at, "%B")
